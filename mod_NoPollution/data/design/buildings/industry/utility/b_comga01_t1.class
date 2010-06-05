@@ -1,64 +1,54 @@
 <?xml version="1.0" encoding="Windows-1252"?>
-	<!--Electricity T2-->
-	<View>
-		<Panel>BuildingSelection</Panel>
-		<NameKey>&B_COMMI03_T2</NameKey>
-		<NameKeySim>&B_COMMI03_T2_SIM</NameKeySim>
-		<DescriptionKey>&B_COMMI03_T2_DES</DescriptionKey>
-		<Param1Key>&B_COMMI03_T2_PARAM1</Param1Key>
-		<Value1Key>&B_COMMI03_T2_VALUE1</Value1Key>
-		<Param2Key>&B_COMMI03_T2_PARAM2</Param2Key>
-		<Value2Key>&B_COMMI03_T2_VALUE2</Value2Key>
-		<Param3Key>&B_COMMI03_T2_PARAM3</Param3Key>
-		<Value3Key>&B_COMMI03_T2_VALUE3</Value3Key>
-	</View>
+	<!--Electricity T1-->
 	<Display>
-		<Model>Data/Gfx/Building/b_commi03_t2.sgbin</Model>
-		<Placeholder>Data/Gfx/Placeholder/b_aastock_T2.sgbin</Placeholder>
+		<Model>Data/Gfx/Building/b_comGa01_t1.sgbin</Model>
+		<Placeholder>Data/Gfx/Placeholder/b_aastock_t3.sgbin</Placeholder>
 		<Fundament>
 			<Use>1</Use>
 			<Model>""</Model>
 		</Fundament>
 		<EditModeOnly>0</EditModeOnly>
-		<Thumb>""</Thumb>
 		<SelectionLayer>PollutionAir</SelectionLayer>
 	</Display>
 	<EntityPosition>
 		<CollisionShape>
-			<Dimension>60,60</Dimension>
-			<Height>89.36413574</Height>
+			<Dimension>40,40</Dimension>
+			<Height>51.7901</Height>
 			<Use>1</Use>
 		</CollisionShape>
-		<UsePlugOrientationForSnap>1</UsePlugOrientationForSnap>
-		<AllowSnapAround>1</AllowSnapAround>
-		<GardenAsCarpet>0</GardenAsCarpet>
-		<MustConnectToRoad>1</MustConnectToRoad>
 	</EntityPosition>
 	<Placement>
 		<Type>BUILDING</Type>
-		<GroundType>TERRAIN</GroundType>
 		<DelegatePrototype>""</DelegatePrototype>
 		<OverPickable>1</OverPickable>
 		<Merge>0</Merge>
 		<LinkPrototypeFile>""</LinkPrototypeFile>
 		<Terraform>
 			<Enabled>1</Enabled>
+			<UseDefault>1</UseDefault>
+			<DigDepth>0.3</DigDepth>
 			<LevelWidth>15</LevelWidth>
 			<CutWidth>0</CutWidth>
-			<UseDefault>1</UseDefault>
-			<DigDepth>0.3000000119</DigDepth>
 			<AngleMax>60</AngleMax>
-			<HeightMax>20</HeightMax>
 		</Terraform>
-		<DefaultHeightOffset>0</DefaultHeightOffset>
-		<SnapPlugToPlug>0</SnapPlugToPlug>
 		<LayerDisplay>PollutionAir</LayerDisplay>
 	</Placement>
+	<View>
+		<Panel>BuildingSelection</Panel>
+		<NameKey>&B_COMGA01_T1</NameKey>
+		<NameKeySim>&B_COMGA01_T1_SIM</NameKeySim>
+		<DescriptionKey>&B_COMGA01_T1_DES</DescriptionKey>
+		<Param1Key>&B_COMGA01_T1_PARAM1</Param1Key>
+		<Value1Key>&B_COMGA01_T1_VALUE1</Value1Key>
+		<Param2Key>&B_COMGA01_T1_PARAM2</Param2Key>
+		<Value2Key>&B_COMGA01_T1_VALUE2</Value2Key>
+		<Param3Key>&B_COMGA01_T1_PARAM3</Param3Key>
+		<Value3Key>&B_COMGA01_T1_VALUE3</Value3Key>
+	</View>
 	<Layouts>
-		<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
-		<LayoutFile1>Data/Design/Layout/B_Service/b_commi03_t2_Base.layout</LayoutFile1>
+		<LayoutFile1>Data/Design/Layout/B_Service/b_comga01_t1_Base.layout</LayoutFile1>
 	</Layouts>
-	<Tag>Utility;T2;MS18;GemCity;Electricity</Tag>
+	<Tag>Utility;T1;MS18;GemCity;Electricity</Tag>
 	<Entity>
 		<Type>BUILDING</Type>
 		<Serializable>0</Serializable>
@@ -68,43 +58,43 @@
 	</Entity>
 	<JobProvider>
 		<MaxJobPerCulture>
-			<AllAm>3</AllAm>
-			<Suit>3</Suit>
+			<LowLife>2</LowLife>
+			<AllAm>2</AllAm>
 		</MaxJobPerCulture>
 		<JobAttractivityPerCulture>
+			<LowLife>100</LowLife>
 			<AllAm>100</AllAm>
-			<Suit>100</Suit>
 		</JobAttractivityPerCulture>
 	</JobProvider>
 	<ResourceComponent>
 		<MaxProduction>
 			<Production1>
 				<ResourceName>RELE_0</ResourceName>
-				<ResourceNumber>4500</ResourceNumber>
+				<ResourceNumber>1800</ResourceNumber>
 				<ResourceUnitMinPriceBenef>13</ResourceUnitMinPriceBenef>
 			</Production1>
 		</MaxProduction>
 		<MaxRequirement>
 			<Requirement1>
 				<ResourceName>RFUE_0</ResourceName>
-				<ResourceNumber>450</ResourceNumber>
+				<ResourceNumber>300</ResourceNumber>
 			</Requirement1>
 		</MaxRequirement>
 	</ResourceComponent>
 	<Layer>
 		<Shape01>
 			<LayerName>PollutionAir</LayerName>
-			<Radius>600</Radius>
+			<Radius>400</Radius>
 			<InfluenceMin>0</InfluenceMin>
 			<InfluenceMax>12</InfluenceMax>
 			<Type>CIRCLE</Type>
-			<GroupID>2</GroupID>
+			<GroupID>1</GroupID>
 		</Shape01>
 	</Layer>
 	<BudgetAgent>
 		<CitizenProvider>0</CitizenProvider>
-		<MaxMonthlyCost>10000</MaxMonthlyCost>
-		<UpkeepCost>18700</UpkeepCost>
+		<MaxMonthlyCost>5000</MaxMonthlyCost>
+		<UpkeepCost>7400</UpkeepCost>
 		<IsCityLink>no</IsCityLink>
 		<IsPublicBuilding>1</IsPublicBuilding>
 		<TaxesMinMalus>0</TaxesMinMalus>
@@ -114,22 +104,21 @@
 	<Conditions>
 		<ConditionSet1>
 			<ModeName>player_lock_all</ModeName>
-			<ConstructionCost>30000</ConstructionCost>
-			<DestructionCost>3000</DestructionCost>
+			<ConstructionCost>15000</ConstructionCost>
+			<DestructionCost>1500</DestructionCost>
 			<VisibleConditions>
 				<MinNbBuildingOnMapWithTagsRelock1>
 					<Name>Gemcity</Name>
 					<Name2>TownHall</Name2>
 					<Number>1</Number>
 				</MinNbBuildingOnMapWithTagsRelock1>
-				<NbCitizen>135</NbCitizen>
 			</VisibleConditions>
 			<UnlockConditions>
 				<BuildingOnMap1>
-					<Name>Data/Design/Buildings/Industry/Utility/b_comga01_t1.class</Name>
-					<Number>4</Number>
+					<Name>Data/Design/Buildings/Industry/Utility/b_allinone_t1.class</Name>
+					<Number>1</Number>
 				</BuildingOnMap1>
-				<NbCitizen>1075</NbCitizen>
+				<NbCitizen>243</NbCitizen>
 				<MinNbBuildingOnMapWithTagsRelock1>
 					<Name>Gemcity</Name>
 					<Name2>TownHall</Name2>
@@ -139,13 +128,7 @@
 		</ConditionSet1>
 		<ConditionSet2>
 			<ModeName>player_lock_achievement</ModeName>
-			<ConstructionCost>30000</ConstructionCost>
-			<DestructionCost>3000</DestructionCost>
-			<UnlockConditions>
-				<BuildingOnMap1>
-					<Name>Data/Design/Buildings/Industry/Utility/b_comga01_t1.class</Name>
-					<Number>4</Number>
-				</BuildingOnMap1>
-			</UnlockConditions>
+			<ConstructionCost>15000</ConstructionCost>
+			<DestructionCost>1500</DestructionCost>
 		</ConditionSet2>
 	</Conditions>
