@@ -108,11 +108,6 @@
 				<Percent>5</Percent>
 				<WarningPercentThreshold>1</WarningPercentThreshold>
 			</Sensitivity01>
-			<Sensitivity02>
-				<Layer>Array_PollutionAir</Layer>
-				<Percent>-2</Percent>
-				<WarningPercentThreshold>-0.5</WarningPercentThreshold>
-			</Sensitivity02>
 		</Sensitivity>
 	</BudgetAgent>
 	<Conditions>
