@@ -1,0 +1,17 @@
+#labels Deprecated
+#sidebar TableOfContents
+=Cities XL Mod Collection=
+
+
+This will be a home for a collection of Cities XL Mods in order to provide a central location to easily browse and download mods. 
+
+===How to post Downloads here===
+You must request access to the project. To join the project please see the instructions [http://code.google.com/p/citiesxlmods/wiki/JoinProject Here]
+<br>
+<br>
+<br>
+<br>
+----
+===List of Mods===
+|| *Mod Name* || *Brief Description* ||
+|| No Pollution || Removed all pollution created by Industry ||
