@@ -67,14 +67,14 @@
 		</Shape02>
 		<Shape03>
 			<LayerName>Emitter_CityLink_Highway</LayerName>
-			<Radius>2000</Radius>
+			<Radius>1000</Radius>
 			<InfluenceMin>100</InfluenceMin>
 			<InfluenceMax>100</InfluenceMax>
 			<Type>CIRCLE</Type>
 		</Shape03>
 	</Layer>
 	<BudgetAgent>
-		<UpkeepCost>100000</UpkeepCost>
+		<UpkeepCost>10000</UpkeepCost>
 		<IsCityLink>highway</IsCityLink>
 		<CityLinkPlanetRange>5000</CityLinkPlanetRange>
 		<IsPublicBuilding>1</IsPublicBuilding>
