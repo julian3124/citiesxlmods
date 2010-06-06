@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 	<!-- Retail T1-->
-	<View>
-		<Panel>BuildingSelection</Panel>
-		<NameKey>&B_PRO01_T1</NameKey>
-		<NameKeySim>&B_PRO01_T1_SIM</NameKeySim>
-		<DescriptionKey>&B_PRO01_T1_DES</DescriptionKey>
-		<Param1Key>&B_PRO01_T1_PARAM1</Param1Key>
-		<Value1Key>&B_PRO01_T1_VALUE1</Value1Key>
-		<Param2Key>&B_PRO01_T1_PARAM2</Param2Key>
-		<Value2Key>&B_PRO01_T1_VALUE2</Value2Key>
-		<Param3Key>&B_PRO01_T1_PARAM3</Param3Key>
-		<Value3Key>&B_PRO01_T1_VALUE3</Value3Key>
-	</View>
 	<Display>
-		<Model>Data/Gfx/Building/b_pro01_t1.sgbin</Model>
-		<Placeholder>Data/Gfx/Placeholder/b_aasho_t1.sgbin</Placeholder>
+		<Model>Data/Gfx/Building/b_ind_all01_t1.sgbin</Model>
+		<Placeholder>Data/Gfx/Placeholder/b_aaind_t1.sgbin</Placeholder>
 		<Fundament>
 			<Use>1</Use>
-			<Model>data/gfx/building/b_socle.sgbin</Model>
+			<Model>""</Model>
 		</Fundament>
 		<SelectionLayer>LRET_1</SelectionLayer>
 	</Display>
@@ -33,19 +21,32 @@
 			<DigDepth>0.6</DigDepth>
 			<LevelWidth>12</LevelWidth>
 			<CutWidth>20</CutWidth>
-			<AngleMax>60</AngleMax>
+			<AngleMax>35</AngleMax>
 		</Terraform>
 		<LayerDisplay>LRET_1</LayerDisplay>
 	</Placement>
+	<Layouts>
+		<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+		<LayoutFile1>Data/Design/Layout/B_All/b_ind_all01_t1_Base.layout</LayoutFile1>
+	</Layouts>
+	<View>
+		<NameKey>&B_IND_ALL01_T1</NameKey>
+		<NameKeySim>&B_IND_ALL01_T1_SIM</NameKeySim>
+		<Panel>BuildingSelection</Panel>
+		<DescriptionKey>&B_IND_ALL01_T1_DES</DescriptionKey>
+		<Param1Key>&B_IND_ALL01_T1_PARAM1</Param1Key>
+		<Value1Key>&B_IND_ALL01_T1_VALUE1</Value1Key>
+		<Param2Key>&B_IND_ALL01_T1_PARAM2</Param2Key>
+		<Value2Key>&B_IND_ALL01_T1_VALUE2</Value2Key>
+		<Param3Key>&B_IND_ALL01_T1_PARAM3</Param3Key>
+		<Value3Key>&B_IND_ALL01_T1_VALUE3</Value3Key>
+	</View>
 	<EntityPosition>
 		<CollisionShape>
 			<Dimension>40,40</Dimension>
-			<Height>19.96</Height>
+			<Height>28.71</Height>
 		</CollisionShape>
 	</EntityPosition>
-	<Layouts>
-		<LayoutFile1>Data/Design/Layout/B_Service/b_pro01_t1_Base.layout</LayoutFile1>
-	</Layouts>
 	<Tag>Commerce;RetailGoods;T1;UnqualifiedWorker;MS18;GemCity;PRIVATE;UnqualifiedWorker</Tag>
 	<Entity>
 		<Type>BUILDING</Type>
@@ -56,19 +57,17 @@
 	</Entity>
 	<JobProvider>
 		<MaxJobPerCulture>
-			<LowLife>5</LowLife>
-			<AllAm>2</AllAm>
+			<LowLife>2</LowLife>
 		</MaxJobPerCulture>
 		<JobAttractivityPerCulture>
 			<LowLife>50</LowLife>
-			<AllAm>20</AllAm>
 		</JobAttractivityPerCulture>
 	</JobProvider>
 	<ResourceComponent>
 		<MaxProduction>
 			<Production1>
 				<ResourceName>RRET_1</ResourceName>
-				<ResourceNumber>100</ResourceNumber>
+				<ResourceNumber>40</ResourceNumber>
 				<ResourceUnitMinPriceBenef>8</ResourceUnitMinPriceBenef>
 			</Production1>
 		</MaxProduction>
@@ -82,11 +81,11 @@
 	<Layer>
 		<Shape01>
 			<LayerName>LRET_1</LayerName>
-			<Radius>100</Radius>
+			<Radius>40</Radius>
 			<InfluenceMin>1</InfluenceMin>
 			<InfluenceMax>1</InfluenceMax>
 			<Type>CIRCLE</Type>
-			<GroupID>2</GroupID>
+			<GroupID>3</GroupID>
 		</Shape01>
 		<Shape02>
 			<LayerName>LowLife</LayerName>
