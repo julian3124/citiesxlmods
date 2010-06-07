@@ -82,7 +82,7 @@
 	<Layer>
 		<Shape01>
 			<LayerName>LRET_1</LayerName>
-			<Radius>40</Radius>
+			<Radius>50</Radius>
 			<InfluenceMin>1</InfluenceMin>
 			<InfluenceMax>1</InfluenceMax>
 			<Type>CIRCLE</Type>
@@ -148,3 +148,9 @@
 			<DestructionCost>20</DestructionCost>
 		</ConditionSet2>
 	</Conditions>
+
+
+
+
+
+
