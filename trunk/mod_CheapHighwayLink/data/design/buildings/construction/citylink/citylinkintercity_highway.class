@@ -67,7 +67,7 @@
 		</Shape02>
 		<Shape03>
 			<LayerName>Emitter_CityLink_Highway</LayerName>
-			<Radius>1000</Radius>
+			<Radius>2000</Radius>
 			<InfluenceMin>100</InfluenceMin>
 			<InfluenceMax>100</InfluenceMax>
 			<Type>CIRCLE</Type>
@@ -85,6 +85,9 @@
 			<ModeName>player_lock_all</ModeName>
 			<ConstructionCost>100000</ConstructionCost>
 			<DestructionCost>10000</DestructionCost>
+			<VisibleConditions>
+				<LayerExist1>Array_Citylink_Highway_Posing</LayerExist1>
+			</VisibleConditions>
 		</ConditionSet1>
 		<ConditionSet2>
 			<ModeName>player_lock_achievement</ModeName>
