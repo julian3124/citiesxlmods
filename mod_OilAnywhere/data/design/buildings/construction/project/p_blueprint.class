@@ -1,0 +1,66 @@
+
+<Tag>MS18;Project;</Tag>
+
+<Entity>
+	<Type>PROJECT</Type>
+	<Serializable>0</Serializable>  
+</Entity>
+
+<View>
+	<Panel></Panel>
+	<NameKey>&BLUEPRINT</NameKey>
+	<NameKeySim>&BLUEPRINT_SIM</NameKeySim>
+	<DescriptionKey>&BLUEPRINT_DES</DescriptionKey>
+	<Param1Key>&B_PARAM1</Param1Key>
+	<Value1Key>&B_VALUE1</Value1Key>
+	<Param2Key>&B_PARAM2</Param2Key>
+	<Value2Key>&B_VALUE2</Value2Key>
+	<Param3Key>&B_PARAM3</Param3Key>
+	<Value3Key>&B_VALUE3</Value3Key>
+</View>
+
+<Project>
+	<Name>BluePrint</Name>
+	<Mode>SEQ</Mode>
+	
+	<Buttons>
+		<Count>0</Count>
+	</Buttons>
+	
+	<TextFields>
+		<Top>
+			<Count>0</Count>
+		</Top>
+		<Infos>
+			<Count>0</Count>
+		</Infos>
+	</TextFields>
+	
+	<Lua>
+		<Table>BluePrintBase</Table>
+		<fn_ONOPEN><![CDATA[ LOG_INFO("Project begin..."); ]]></fn_ONOPEN>
+		<fn_ONCLOSE><![CDATA[ LOG_INFO("Project end..."); ]]></fn_ONCLOSE>
+		<fn_ONELEMENTOPEN></fn_ONELEMENTOPEN>
+		<fn_ONELEMENTCLOSE></fn_ONELEMENTCLOSE>
+		<fn_ONPROJECTVALIDATION></fn_ONPROJECTVALIDATION>
+	</Lua>
+  
+	<Steps>
+		<Count>0</Count>
+	</Steps>
+</Project>
+
+<Placement>
+	<Type>PROJECT</Type>
+	<Terraform>
+		<Enabled>0</Enabled>
+		<UseDefault>0</UseDefault>
+	</Terraform>
+</Placement>
+
+<PlacingZone>
+	<Category>
+		BluePrint
+		<PrototypeFile>Data/Design/Buildings/GEM/GEMBus/Road/Special/r_TransportRouteBus.class</PrototypeFile>
+	</Category>
+</PlacingZone>

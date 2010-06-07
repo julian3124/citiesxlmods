@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>Deprecated</Tag>
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&R_WATERWAY_20x40</NameKey>
+	<NameKeySim>&R_WATERWAY_20x40_SIM</NameKeySim>
+	<DescriptionKey>&R_WATERWAY_20x40_DES</DescriptionKey>
+</View>
+<Entity>
+	<Type>ROADLINE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+<Display>
+	<Model>""</Model>
+	<Placeholder>""</Placeholder>
+	<Fundament>
+		<Use>1</Use>
+		<Model>""</Model>
+	</Fundament>
+	<EditModeOnly>1</EditModeOnly>
+</Display>
+<TransportLine>
+	<Type>0</Type>
+	<Dimension>40,20</Dimension>
+	<_PavementWidth>5,5</_PavementWidth>
+  <AllowSnap>0</AllowSnap>
+</TransportLine>
+<BudgetAgent>
+	<UpkeepCost>0</UpkeepCost>
+	<IsCityLink>no</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+</BudgetAgent>
+<Placement>
+	<Type>ROAD</Type>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+	<Terraform>
+    <Enabled>0</Enabled>
+    <UseDefault>0</UseDefault>
+    <DigDepth>0</DigDepth>
+    <LevelWidth>10</LevelWidth>
+    <CutWidth>10</CutWidth>
+    <AngleMax>60</AngleMax>
+  </Terraform>
+  <GroundType>WATER</GroundType>
+</Placement>
+<Construction>
+	<IsDestroyable>0</IsDestroyable>
+	<IsZoneConstruction>0</IsZoneConstruction>
+	<PlacementType>ROAD</PlacementType>
+	<Constructing>
+		<TimeStep>10</TimeStep>
+	</Constructing>
+	<Destroying>
+		<TimeStep>5</TimeStep>
+	</Destroying>
+</Construction>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Road/Special/Militaryboat_waterway_20x40.layout</LayoutFile1>
+</Layouts>
+<Conditions>
+	<ConditionSet1>
+		<ModeName>player_lock_all</ModeName>
+		<ConstructionCost>10</ConstructionCost>
+		<DestructionCost>5</DestructionCost>
+	</ConditionSet1>
+	<ConditionSet2>
+		<ModeName>player_lock_achievement</ModeName>
+		<ConstructionCost>10</ConstructionCost>
+		<DestructionCost>5</DestructionCost>
+	</ConditionSet2>
+</Conditions>

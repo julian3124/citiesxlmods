@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>Decoration;Terraform;MS18</Tag>
+
+<Entity>
+	<Type>BRUSH</Type>
+	<Serializable>0</Serializable>
+  <WithOptional1>SSFCOPLANEPOSITION</WithOptional1>
+</Entity>
+
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&D_TF_LEVEL_T2</NameKey>
+	<NameKeySim>&D_SIM</NameKeySim>
+	<DescriptionKey>&D_TF_LEVEL_T2_DES</DescriptionKey>
+	<Param1Key>&D_TF_LEVEL_T2_PARAM1</Param1Key>
+	<Value1Key>&D_TF_LEVEL_T2_VALUE1</Value1Key>
+	<Param2Key>&D_TF_LEVEL_T2_PARAM2</Param2Key>
+	<Value2Key>&D_TF_LEVEL_T2_VALUE2</Value2Key>
+	<Param3Key>&D_TF_LEVEL_T2_PARAM3</Param3Key>
+	<Value3Key>&D_TF_LEVEL_T2_VALUE3</Value3Key>
+	<PriceType>&VARIABLE_PRICE</PriceType>
+</View>
+
+<Display>
+	<Model>""</Model>
+	<Thumb>tf_level_t2.tga</Thumb>
+	<Placeholder>""</Placeholder>
+</Display>
+
+<Placement>
+	<Type>TERRAFORM</Type>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+  <Terraform>
+    <Enabled>1</Enabled>
+    <UseDefault>0</UseDefault>
+    <DigDepth>0.0</DigDepth>
+    <LevelWidth>15</LevelWidth>
+    <CutWidth>100</CutWidth>
+    <AngleMax>50</AngleMax>
+  </Terraform>
+  <LayerDisplay>Layer_Relief</LayerDisplay>
+</Placement>
+
+<PlacingZone>
+  <Parameters>
+    <ShapeWidth>30</ShapeWidth>
+    <SmoothWidth>40</SmoothWidth>
+  </Parameters>
+</PlacingZone>
+
+<Conditions>
+	<ConditionSet1>
+		<ModeName>player_lock_all</ModeName>
+		<ConstructionCost>400</ConstructionCost>
+		<DestructionCost>40</DestructionCost>
+		<VisibleConditions>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>GemCity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+		</VisibleConditions>
+		<UnlockConditions>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>GemCity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+		</UnlockConditions>
+	</ConditionSet1>
+	<ConditionSet2>
+		<ModeName>player_lock_achievement</ModeName>
+		<ConstructionCost>400</ConstructionCost>
+		<DestructionCost>40</DestructionCost>
+	</ConditionSet2>
+</Conditions>
+
+<SurfaceOperation>
+  <Type>BRUSH</Type>
+  <Outline>
+    <Pos>-1;0;0</Pos>
+    <Pos>-0.5;0.866;0</Pos>
+    <Pos> 0.5;0.866;0</Pos>
+    <Pos> 1;0;0</Pos>
+    <Pos> 0.5;-0.866;0</Pos>
+    <Pos>-0.5;-0.866;0</Pos>
+  </Outline>
+</SurfaceOperation>

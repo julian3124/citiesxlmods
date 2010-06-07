@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>GemCity;T1;Foundation;FoundationBridge;RoadLine;StyleBase;40x10;Street</Tag>
+<Entity>
+	<Type>ROADLINE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+<TransportFoundation>
+	<MinElement>2</MinElement>
+	<MaxElement>20</MaxElement>
+	<AltitudeRange>30,80</AltitudeRange>
+	<MaxDeckBeforePier>2</MaxDeckBeforePier>
+	<MaxDeckBetweenPier>5</MaxDeckBetweenPier>
+	<DebugColor>0,0,255,255</DebugColor>
+	<Elements>
+		<Begin>1</Begin>
+		<Deck>1</Deck>
+		<Pier>1</Pier>
+		<MainPier>1</MainPier>
+		<End>1</End>
+	</Elements>
+	<AltitudeValidityRange>
+    <UseWaterReference>0</UseWaterReference>
+    <Begin>10,80</Begin>
+    <Deck>10,100</Deck>
+    <Pier>10,100</Pier>
+    <MainPier>10,100</MainPier>
+    <End>10,80</End>
+  </AltitudeValidityRange>
+</TransportFoundation>
+<TransportLine>
+  <AllowIntersection>0</AllowIntersection>
+  <AllowSnap>0</AllowSnap>
+  <AllowExternCollision>0</AllowExternCollision>
+  <MaxSlopeDeg>35</MaxSlopeDeg>
+</TransportLine>
+<BudgetAgent>
+	<ConstructionCost>10</ConstructionCost>
+	<DestructionCost>5</DestructionCost>
+	<UpkeepCost>0</UpkeepCost>
+	<CitizenClientMax>0</CitizenClientMax>
+	<CitizenConsumerEffectBase>0</CitizenConsumerEffectBase>
+	<CitizenConsumerEffectMax>0</CitizenConsumerEffectMax>
+	<IsCityLink>0</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+</BudgetAgent>
+<Placement>
+	<Type>ROAD</Type>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+  <Terraform>
+    <Enabled>1</Enabled>
+    <DigDepth>0</DigDepth>
+    <LevelWidth>15</LevelWidth>
+    <CutWidth>15</CutWidth>
+    <AngleMax>60</AngleMax>
+    <UseDefault>0</UseDefault>
+    <Type>ONLYDIG</Type>
+  </Terraform>
+  <GroundType>ANY</GroundType>
+</Placement>
+
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Road/Foundation/Foundation_Bridge_Begin_40x10.layout</LayoutFile1>
+	<LayoutFile2>Data/Design/Layout/Road/Foundation/Foundation_Bridge_End_40x10.layout</LayoutFile2>
+	<LayoutFile3>Data/Design/Layout/Road/Foundation/Foundation_Bridge_Deck_40x10.layout</LayoutFile3>
+	<LayoutFile4>Data/Design/Layout/Road/Foundation/Foundation_Bridge_Pier_40x10.layout</LayoutFile4>
+	<LayoutFile5>Data/Design/Layout/Road/Foundation/Foundation_Bridge_MainPier_40x10.layout</LayoutFile5>
+</Layouts>

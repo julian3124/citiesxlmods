@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+	<!--INDUSTRIES ZONEES-->
+	<Display>
+		<Model>""</Model>
+		<Thumb>medind_q3_t3.tga</Thumb>
+	</Display>
+	<Placement>
+		<Type>SURFACE</Type>
+		<DelegatePrototype>
+      data/design/buildings/construction/massplacementtool/companyzoning/rdmap_ind_60.class
+    </DelegatePrototype>
+		<OverPickable>1</OverPickable>
+		<Merge>0</Merge>
+		<LinkPrototypeFile>""</LinkPrototypeFile>
+		<Terraform>
+			<Enabled>0</Enabled>
+			<UseDefault>0</UseDefault>
+			<DigDepth>0.6</DigDepth>
+			<LevelWidth>12</LevelWidth>
+			<CutWidth>20</CutWidth>
+			<AngleMax>60</AngleMax>
+		</Terraform>
+	</Placement>
+	<View>
+		<Panel>BuildingSelection</Panel>
+		<NameKey>&B_INDR2T3</NameKey>
+		<NameKeySim>&B_INDR2T3_SIM</NameKeySim>
+		<DescriptionKey>&B_INDR2T3_DES</DescriptionKey>
+		<Param1Key>&B_INDR2T3_PARAM1</Param1Key>
+		<Value1Key>&B_INDR2T3_VALUE1</Value1Key>
+		<Param2Key>&B_INDR2T3_PARAM2</Param2Key>
+		<Value2Key>&B_INDR2T3_VALUE2</Value2Key>
+		<Param3Key>&B_INDR2T3_PARAM3</Param3Key>
+		<Value3Key>&B_INDR2T3_VALUE3</Value3Key>
+	</View>
+	<PlacingZone>
+		<Category Min="0" Max="0" Priority="0">
+    Company
+    <PrototypeFile>Data\Design\Buildings\Construction\Company\co_MetalInd.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="75">
+    Direction
+    <PrototypeFile>Data\Design\Buildings\Industry\BusinessService\b_ind_bob31B_t2.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="100">
+    Usine1
+    <PrototypeFile>Data\Design\Buildings\Industry\Production\b_ind_low01_t3.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="100">
+    Usine2
+    <PrototypeFile>Data\Design\Buildings\Industry\Production\b_ind_low03_t3.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="100">
+    Usine3
+    <PrototypeFile>Data\Design\Buildings\Industry\Production\b_sto04_t2.class</PrototypeFile></Category>
+		<Category Min="0" Max="0" Priority="100">
+    Usine4
+    <PrototypeFile>Data\Design\Buildings\Industry\BusinessService\b_ind_all02_t1.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="100">
+    Parking
+    <PrototypeFile>Data\Design\Buildings\Industry\BusinessService\b_com_carpark_t3.class</PrototypeFile></Category>
+		<Category Min="0" Max="0" Priority="50">
+    Stock1
+    <PrototypeFile>Data\Design\Buildings\Industry\ImportExport\b_sto04_t3.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="50">
+    Stock2
+    <PrototypeFile>Data\Design\Buildings\Industry\ImportExport\b_sto06_t3.class</PrototypeFile></Category>
+		<Category Min="1" Max="1" Priority="50">
+    Waste
+    <PrototypeFile>Data\Design\Buildings\Industry\Utility\b_comga01_t1.class</PrototypeFile></Category>
+	</PlacingZone>
+	<SurfaceOperation>
+		<Type>EXPANDSOURCE</Type>
+		<ExpandWidth>30</ExpandWidth>
+	</SurfaceOperation>
+	<Tag>Deprecated</Tag>
+	<Entity>
+		<Type>BUILDINGMAPZONE</Type>
+		<Serializable>0</Serializable>
+		<WithOptional1>SGMCOCOMPANYAGENT</WithOptional1>
+		<WithOptional2>DSFCOBUILDINGMAPDISPLAY</WithOptional2>
+		<WithOptional3>SLTCOSECTIONLAYOUTS</WithOptional3>
+		<WithOptional4>LSNCOCONTEXT</WithOptional4>
+	</Entity>
+	<Construction>
+		<IsDestroyable>1</IsDestroyable>
+		<IsZoneConstruction>0</IsZoneConstruction>
+		<PlacementType>BUILDING</PlacementType>
+		<Constructing>
+			<TimeStep>120</TimeStep>
+		</Constructing>
+		<Destroying>
+			<TimeStep>48</TimeStep>
+		</Destroying>
+	</Construction>
+	<Conditions>
+		<ConditionSet1>
+			<ModeName>player_lock_all</ModeName>
+			<VisibleConditions>
+				<MinNbBuildingOnMapWithTagsRelock1>
+					<Name>GemCity</Name>
+					<Name2>TownHall</Name2>
+					<Number>1</Number>
+				</MinNbBuildingOnMapWithTagsRelock1>
+			</VisibleConditions>
+			<UnlockConditions>
+				<MinNbBuildingOnMapWithTagsRelock1>
+					<Name>GemCity</Name>
+					<Name2>TownHall</Name2>
+					<Number>1</Number>
+				</MinNbBuildingOnMapWithTagsRelock1>
+			</UnlockConditions>
+		</ConditionSet1>
+		<ConditionSet2>
+			<ModeName>player_lock_achievement</ModeName>
+		</ConditionSet2>
+	</Conditions>

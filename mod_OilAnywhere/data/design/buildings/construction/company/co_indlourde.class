@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>COMPANY</Type>
+	<Serializable>0</Serializable>
+</Entity>
+
+<Placement>
+  <Type>BUILDING</Type>
+  <Terraform>
+    <Enabled>1</Enabled>
+    <UseDefault>0</UseDefault>
+    <DigDepth>0.3</DigDepth>
+    <LevelWidth>10</LevelWidth>
+    <CutWidth>5</CutWidth>
+    <AngleMax>50</AngleMax>
+  </Terraform>
+
+</Placement>
+
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&B_EQUIPMENTIND</NameKey>
+	<NameKeySim>&B_EQUIPMENTIND_SIM</NameKeySim>
+	<DescriptionKey>&B_EQUIPMENTIND_DES</DescriptionKey>
+	<Param1Key>&B_EQUIPMENTIND_PARAM1</Param1Key>
+	<Value1Key>&B_EQUIPMENTIND_VALUE1</Value1Key>
+	<Param2Key>&B_EQUIPMENTIND_PARAM2</Param2Key>
+	<Value2Key>&B_EQUIPMENTIND_VALUE2</Value2Key>
+	<Param3Key>&B_EQUIPMENTIND_PARAM3</Param3Key>
+	<Value3Key>&B_EQUIPMENTIND_VALUE3</Value3Key>
+</View>
+
+<Layouts>
+  <UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+  <LayoutFile1>Data/Design/Layout/Surface/MassPlacementTool/bldmap_mine.layout</LayoutFile1>
+</Layouts>
+
+<!--
+<SurfaceOperation>
+  <Type>BORDER</Type>
+  <BorderDepth>10</BorderDepth>
+  <Border>
+    <SurfaceOperation>
+      <Type>PATTERNFILL</Type>
+    </SurfaceOperation>
+  </Border>
+  <Inside>
+    <SurfaceOperation>
+      <ExpandWidth>30</ExpandWidth>
+      <SubOperation>
+        <SurfaceOperation>
+          <Type>PATTERNFILL</Type>
+        </SurfaceOperation>
+      </SubOperation>
+    </SurfaceOperation>
+  </Inside>
+</SurfaceOperation>
+-->
+
+<SurfaceOperation>
+  <Type>EXPAND</Type>
+  <ExpandWidth>30</ExpandWidth>
+  <SubOperation>
+    <SurfaceOperation>
+      <Type>PATTERNFILL</Type>
+    </SurfaceOperation>
+  </SubOperation>
+</SurfaceOperation>

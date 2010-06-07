@@ -1,0 +1,24 @@
+
+
+<Entity>
+	<Type>PROJECT</Type>
+	<Serializable>0</Serializable>  
+</Entity>
+
+<Project>
+	<Name>Test</Name>
+	<Lua>
+		<Table>ProjectTest</Table>
+		<fn_ONELEMENTOPEN></fn_ONELEMENTOPEN>
+		<fn_ONELEMENTCLOSE></fn_ONELEMENTCLOSE>
+		<fn_ONPROJECTVALIDATION></fn_ONPROJECTVALIDATION>
+	</Lua>
+</Project>
+
+<Placement>
+	<Type>PROJECT</Type>	
+	<Terraform>
+		<Enabled>0</Enabled>
+		<UseDefault>0</UseDefault>
+	</Terraform>
+</Placement>
