@@ -68,7 +68,7 @@
 	<Layer>
 		<Shape01>
 			<LayerName>LRET_1</LayerName>
-			<Radius>400</Radius>
+			<Radius>200</Radius>
 			<InfluenceMin>7</InfluenceMin>
 			<InfluenceMax>7</InfluenceMax>
 			<Type>CIRCLE</Type>
