@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+	<!--Sim Vide-->
+	<View>
+		<Panel>BuildingSelection</Panel>
+		<NameKey>&B_IND_FRI04_T2</NameKey>
+		<NameKeySim>&B_IND_FRI04_T2_SIM</NameKeySim>
+		<DescriptionKey>&B_IND_FRI04_T2_DES</DescriptionKey>
+		<Param1Key>&B_IND_FRI04_T2_PARAM1</Param1Key>
+		<Value1Key>&B_IND_FRI04_T2_VALUE1</Value1Key>
+		<Param2Key>&B_IND_FRI04_T2_PARAM2</Param2Key>
+		<Value2Key>&B_IND_FRI04_T2_VALUE2</Value2Key>
+		<Param3Key>&B_IND_FRI04_T2_PARAM3</Param3Key>
+		<Value3Key>&B_IND_FRI04_T2_VALUE3</Value3Key>
+	</View>
+	<Display>
+		<Model>Data/Gfx/Building/b_ind_fri04_t2.sgbin</Model>
+		<Placeholder>Data/Gfx/Placeholder/b_aaind_t2.sgbin</Placeholder>
+	</Display>
+	<Layouts>
+		<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+		<LayoutFile1>Data/Design/Layout/B_Fri/b_ind_fri04_t2_Base.layout</LayoutFile1>
+	</Layouts>
+	<EntityPosition>
+		<CollisionShape>
+			<Dimension>40,40</Dimension>
+			<Height>30.96</Height>
+		</CollisionShape>
+	</EntityPosition>
+	<Tag>Deprecated</Tag>
+	<Entity>
+		<Type>BUILDING</Type>
+		<Serializable>0</Serializable>
+	</Entity>

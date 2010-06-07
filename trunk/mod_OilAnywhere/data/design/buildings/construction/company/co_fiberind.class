@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>COMPANY</Type>
+	<Serializable>0</Serializable>
+</Entity>
+
+<Placement>
+  <Type>BUILDING</Type>
+</Placement>
+
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&B_FIBERIND</NameKey>
+	<NameKeySim>&B_FIBERIND_SIM</NameKeySim>
+	<DescriptionKey>&B_FIBERIND_DES</DescriptionKey>
+	<Param1Key>&B_FIBERIND_PARAM1</Param1Key>
+	<Value1Key>&B_FIBERIND_VALUE1</Value1Key>
+	<Param2Key>&B_FIBERIND_PARAM2</Param2Key>
+	<Value2Key>&B_FIBERIND_VALUE2</Value2Key>
+	<Param3Key>&B_FIBERIND_PARAM3</Param3Key>
+	<Value3Key>&B_FIBERIND_VALUE3</Value3Key>
+</View>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>AirLine;ProjectStep;Stock;Deprecated</Tag>
+<Display>
+	<Model>Data/Gfx/Building/b_ind_all30_t2.sgbin</Model>
+	<Placeholder>Data/Gfx/Placeholder/b_aaind_t2.sgbin</Placeholder>
+	<Fundament>
+		<Use>1</Use>
+		<Model>""</Model>
+	</Fundament>
+	<EditModeOnly>0</EditModeOnly>
+</Display>
+<EntityPosition>
+	<CollisionShape>
+		<Dimension>40,40</Dimension>
+		<Height>22.3261</Height>
+		<Use>1</Use>
+	</CollisionShape>
+</EntityPosition>
+<Placement>
+	<Type>BUILDING</Type>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+	<Terraform>
+		<Enabled>1</Enabled>
+		<UseDefault>1</UseDefault>
+		<DigDepth>0.6</DigDepth>
+		<LevelWidth>12</LevelWidth>
+		<CutWidth>20</CutWidth>
+		<AngleMax>60</AngleMax>
+	</Terraform>
+</Placement>
+<Entity>
+	<Type>BUILDING</Type>
+	<Serializable>0</Serializable>
+	<WithOptional1>SCZCOJOBPROVIDER</WithOptional1>
+	<WithOptional3>SLACOLAYER</WithOptional3>
+</Entity>
+<JobProvider>
+	<MaxJobPerCulture>
+		<LowLife>4</LowLife>
+		<AllAm>1</AllAm>
+		<Suit>0</Suit>
+		<Elite>0</Elite>
+	</MaxJobPerCulture>
+	<JobAttractivityPerCulture>
+		<LowLife>80</LowLife>
+		<AllAm>80</AllAm>
+		<Suit>80</Suit>
+		<Elite>80</Elite>
+	</JobAttractivityPerCulture>
+</JobProvider>
+<Layer>
+	<Shape01>
+		<LayerName>Supply</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>300</InfluenceMax>
+		<InfluenceMin>100</InfluenceMin>
+		<Radius>0</Radius>
+	</Shape01>
+</Layer>
+<BudgetAgent>
+	<UpkeepCost>20</UpkeepCost>
+	<IsCityLink>no</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+</BudgetAgent>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/B_All/b_ind_all30_t2_Base.layout</LayoutFile1>
+</Layouts>
+<View>
+	<NameKey>Hangar</NameKey>
+	<NameKeySim>&B_IND_ALL30_T2_SIM</NameKeySim>
+	<Panel>BuildingSelection</Panel>
+	<DescriptionKey>&B_IND_ALL30_T2_DES</DescriptionKey>
+	<Param1Key>&B_IND_ALL30_T2_PARAM1</Param1Key>
+	<Value1Key>&B_IND_ALL30_T2_VALUE1</Value1Key>
+	<Param2Key>&B_IND_ALL30_T2_PARAM2</Param2Key>
+	<Value2Key>&B_IND_ALL30_T2_VALUE2</Value2Key>
+	<Param3Key>&B_IND_ALL30_T2_PARAM3</Param3Key>
+	<Value3Key>&B_IND_ALL30_T2_VALUE3</Value3Key>
+</View>
+<Conditions>
+	<ConditionSet1>
+		<ModeName>player_lock_all</ModeName>
+		<ConstructionCost>1200</ConstructionCost>
+		<DestructionCost>120</DestructionCost>
+	</ConditionSet1>
+	<ConditionSet2>
+		<ModeName>player_lock_achievement</ModeName>
+		<ConstructionCost>1200</ConstructionCost>
+		<DestructionCost>120</DestructionCost>
+	</ConditionSet2>
+</Conditions>

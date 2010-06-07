@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>GemCity;T1;T3;Foundation;FoundationTunnel;RoadLine;Road;Street;Avenue;ExpressWay;HighWay;Style;Size</Tag>
+<Entity>
+	<Type>ROADLINE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+<TransportFoundation>
+	<MinElement>2</MinElement>
+	<MaxElement>10</MaxElement>
+	<AltitudeRange>-100,-30</AltitudeRange>
+  <AltitudePropagationRange>-100,-0.01</AltitudePropagationRange>
+  <MaxDeckBeforePier>4</MaxDeckBeforePier>
+	<MaxDeckBetweenPier>8</MaxDeckBetweenPier>
+	<DebugColor>255,0,0,255</DebugColor>
+  <Elements>
+    <Begin>1</Begin>
+    <Deck>1</Deck>
+    <Pier>0</Pier>
+    <MainPier>0</MainPier>
+    <End>1</End>
+  </Elements>
+  <AltitudeAppearanceRange>
+    <Begin>-20,100</Begin>
+    <End>-20,100</End>
+  </AltitudeAppearanceRange>
+</TransportFoundation>
+<TransportLine>
+  <AllowIntersection>0</AllowIntersection>
+  <AllowSnap>0</AllowSnap>
+  <AllowExternCollision>0</AllowExternCollision>
+  <MaxSlopeDeg>35</MaxSlopeDeg>
+</TransportLine>
+<BudgetAgent>
+	<ConstructionCost>10</ConstructionCost>
+	<DestructionCost>5</DestructionCost>
+	<UpkeepCost>0</UpkeepCost>
+	<CitizenClientMax>0</CitizenClientMax>
+	<CitizenConsumerEffectBase>0</CitizenConsumerEffectBase>
+	<CitizenConsumerEffectMax>0</CitizenConsumerEffectMax>
+	<IsCityLink>0</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+	<DefaultRight>Visible</DefaultRight>
+</BudgetAgent>
+<Placement>
+	<Type>ROAD</Type>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+  <Terraform>
+    <Enabled>0</Enabled>
+    <UseDefault>0</UseDefault>
+  </Terraform>
+  <GroundType>ANY</GroundType>
+</Placement>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_Begin_T1.layout</LayoutFile1>
+	<LayoutFile2>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_Begin_T3.layout</LayoutFile2>
+	<LayoutFile3>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_End_T1.layout</LayoutFile3>
+	<LayoutFile4>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_End_T3.layout</LayoutFile4>
+	<LayoutFile5>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_Deck_T1.layout</LayoutFile5>
+	<LayoutFile6>Data/Design/Layout/Road/Foundation/Foundation_Tunnel_Deck_T3.layout</LayoutFile6>
+</Layouts>

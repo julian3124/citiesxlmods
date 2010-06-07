@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+	<Tag>Deprecated</Tag>
+<Entity>
+	<Type>ROADLINE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&R_MILITARYAIRWAY_20x40</NameKey>
+	<NameKeySim>&R_MILITARYAIRWAY_20x40_SIM</NameKeySim>
+	<DescriptionKey>&R_MILITARYAIRWAY_20x40_DES</DescriptionKey>
+</View>
+<Display>
+	<Model>""</Model>
+	<Placeholder>""</Placeholder>
+	<Fundament>
+		<Use>1</Use>
+		<Model>""</Model>
+	</Fundament>
+	<EditModeOnly>1</EditModeOnly>
+</Display>
+<TransportLine>
+	<Type>0</Type>
+	<Dimension>40,20</Dimension>
+	<_PavementWidth>5,5</_PavementWidth>
+  <AllowSnap>0</AllowSnap>
+  <AllowIntersection>0</AllowIntersection>
+</TransportLine>
+<BudgetAgent>
+	<UpkeepCost>0</UpkeepCost>
+	<IsCityLink>no</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+</BudgetAgent>
+<Placement>
+	<Type>ROAD</Type>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+	<Terraform>
+    <Enabled>0</Enabled>
+		<UseDefault>0</UseDefault>
+		<DigDepth>0</DigDepth>
+		<LevelWidth>10</LevelWidth>
+		<CutWidth>10</CutWidth>
+		<AngleMax>60</AngleMax>
+	</Terraform>
+  <GroundType>ANY</GroundType>
+</Placement>
+<Construction>
+  <IsDestroyable>0</IsDestroyable>
+  <IsZoneConstruction>0</IsZoneConstruction>
+  <PlacementType>ROAD</PlacementType>
+  <Constructing>
+	<TimeStep>0</TimeStep>
+  </Constructing>
+  <Destroying>
+	<TimeStep>0</TimeStep>
+  </Destroying>
+</Construction>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Road/Special/r_airwayMilitary_20x40.layout</LayoutFile1>
+</Layouts>

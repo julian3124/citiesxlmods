@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>TransportLine;RoadLine;T3;Avenue;40x25;GemCity;MS18;MS16;Deprecated</Tag>
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&R_AVENUE_40x25</NameKey>
+	<NameKeySim>&R_SIM</NameKeySim>
+	<DescriptionKey>&R_DOUBLEROAD02_DES</DescriptionKey>
+	<Param1Key>&R_DOUBLEROAD02_PARAM1</Param1Key>
+	<Value1Key>&R_DOUBLEROAD02_VALUE1</Value1Key>
+	<Param2Key>&R_DOUBLEROAD02_PARAM2</Param2Key>
+	<Value2Key>&R_DOUBLEROAD02_VALUE2</Value2Key>
+	<Param3Key>&R_DOUBLEROAD02_PARAM3</Param3Key>
+	<Value3Key>&R_DOUBLEROAD02_VALUE3</Value3Key>
+	<PriceType>&VARIABLE_PRICE</PriceType>
+</View>
+<Display>
+	<Model>""</Model>
+	<Placeholder>""</Placeholder>
+	<Fundament>
+		<Use>1</Use>
+		<Model>""</Model>
+	</Fundament>
+	<EditModeOnly>0</EditModeOnly>
+	<Thumb>R_Avenue_40x25.tga</Thumb>
+</Display>
+<TransportLine>
+	<Dimension>40,25</Dimension>
+	<_PavementWidth>2.5,2.5</_PavementWidth>
+	<AllowIntersection>1</AllowIntersection>
+	<AllowSnap>1</AllowSnap>
+	<MaxLength>0</MaxLength>
+	<MaxSlopeDeg>25</MaxSlopeDeg>
+	<Type>0</Type>
+	<InfoLane>
+		<NbLaneSameSense>2</NbLaneSameSense>
+		<NbLaneInverse>2</NbLaneInverse>
+		<Capacity>40 | 40</Capacity>
+	</InfoLane>
+	<AltGroup>NoCostCity25</AltGroup>
+</TransportLine>
+<Placement>
+	<Type>ROAD</Type>
+	<LayerDisplay>Array_Citylink_Posing</LayerDisplay>
+	<DelegatePrototype>data/design/buildings/construction/massplacementtool/multilines_citylink_road.class</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+		<Terraform>
+			<Enabled>1</Enabled>
+			<UseDefault>0</UseDefault>
+			<DigDepth>0</DigDepth>
+			<LevelWidth>15</LevelWidth>
+			<CutWidth>0</CutWidth>
+			<AngleMax>60</AngleMax>
+			<HeightMax>20</HeightMax>
+		</Terraform>
+	
+	<GroundType>TERRAIN</GroundType>
+</Placement>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Road/R_Avenue_40x25/R_Avenue_40x25.layout</LayoutFile1>
+	<LayoutFile2>Data/Design/Layout/Road/R_Avenue_40x25/R_Avenue_40x25_CrossEnd.layout</LayoutFile2>
+	<LayoutFile3>Data/Design/Layout/Road/R_Avenue_40x25/R_Avenue_40x25_CrossBegin.layout</LayoutFile3>
+	<LayoutFile4>Data/Design/Layout/Road/R_Avenue_40x25/R_Avenue_40x25_CrossBoth.layout</LayoutFile4>
+	<LayoutFile5>Data/Design/Layout/Road/R_Avenue_40x25/R_Avenue_40x25_Empty.layout</LayoutFile5>
+	
+</Layouts>
+<Entity>
+	<Type>ROADLINE</Type>
+	<Serializable>0</Serializable>
+	<WithOptional1>SGMCOCOMPANYAGENT</WithOptional1>
+</Entity>
+<BudgetAgent>
+	<CitizenProvider>0</CitizenProvider>
+	<UpkeepCost>0</UpkeepCost>
+	<IsCityLink>no</IsCityLink>
+	<IsPublicBuilding>0</IsPublicBuilding>
+</BudgetAgent>
+<Conditions>
+	<ConditionSet1>
+		<ModeName>player_lock_all</ModeName>
+		<ConstructionCost>0</ConstructionCost>
+		<DestructionCost>0</DestructionCost>
+		<VisibleConditions>
+			<NbCitizen>0</NbCitizen>
+		</VisibleConditions>
+		<UnlockConditions>
+			<NbCitizen>0</NbCitizen>
+		</UnlockConditions>
+	</ConditionSet1>
+	<ConditionSet2>
+		<ModeName>player_lock_achievement</ModeName>
+		<ConstructionCost>0</ConstructionCost>
+		<DestructionCost>0</DestructionCost>
+	</ConditionSet2>
+</Conditions>
