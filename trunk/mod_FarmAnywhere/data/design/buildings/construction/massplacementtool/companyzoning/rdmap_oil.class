@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>ROADMAPZONE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+
+<PlacingZone>
+  
+  <Category>
+    ExternRoad
+    <PrototypeFile>Data/Design/Buildings/construction/road/R_GemFarm_Street_40x10.class</PrototypeFile>
+  </Category>
+
+  <Category>
+    InternRoad
+    <PrototypeFile>Data/Design/Buildings/construction/road/R_GemFarm_Street_40x10.class</PrototypeFile>
+  </Category>
+
+  <Parameters>
+    <RoadmapDepth>150</RoadmapDepth>
+    <MaxArea>30000</MaxArea>
+    <MinArea>10000</MinArea>
+    <RoadsFilter>
+      <Pass0_Order>EMPTY</Pass0_Order>
+      <Pass1_Order>EMPTY</Pass1_Order>
+    </RoadsFilter>
+    <InteriorMaxSlope>25</InteriorMaxSlope>
+    <Division>0</Division>
+    <!--<RoadMaxSlopeDegConstraint>6</RoadMaxSlopeDegConstraint>-->
+  </Parameters>
+  
+</PlacingZone>
+
+<Placement>
+	<Type>SURFACE</Type>
+	<Terraform>
+		<Enabled>0</Enabled>
+    <UseDefault>0</UseDefault>
+	</Terraform>
+  <LayerDisplay>Array_Oil_Posing</LayerDisplay>
+  <LayerConstraint>
+    <Layer01>
+      <LayerName>Array_Oil_Posing</LayerName>
+      <MinValue>100</MinValue>
+    </Layer01>
+  </LayerConstraint>
+</Placement>
