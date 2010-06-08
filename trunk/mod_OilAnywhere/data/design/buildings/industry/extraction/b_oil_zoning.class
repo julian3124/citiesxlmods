@@ -5,12 +5,6 @@
 		<Thumb>oil_extraction.tga</Thumb>
 	</Display>
 	<Placement>
-		<LayerConstraint>
-			<Layer01>
-				<LayerName>Array_Oil_Posing</LayerName>
-				<MinValue>100</MinValue>
-			</Layer01>
-		</LayerConstraint>
 		<Type>SURFACE</Type>
 		<DelegatePrototype>
 			data/design/buildings/construction/massplacementtool/companyzoning/rdmap_oil.class
@@ -18,7 +12,6 @@
 		<OverPickable>1</OverPickable>
 		<Merge>0</Merge>
 		<LinkPrototypeFile>""</LinkPrototypeFile>
-		<LayerDisplay>Array_Oil_Posing</LayerDisplay>
 		<Terraform>
 			<Enabled>0</Enabled>
 			<UseDefault>0</UseDefault>
