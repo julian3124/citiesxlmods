@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>ROADMAPZONE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+
+<PlacingZone>
+
+
+
+  <Category>
+    BuildingMap
+    <PrototypeFile>data/design/buildings/construction/massplacementtool/bldmap-rectangle.class</PrototypeFile>
+  </Category>
+
+  <Parameters>
+    <RoadmapType>OBB</RoadmapType>
+    <InteriorMaxSlope>25</InteriorMaxSlope>
+    <RoadMaxSlopeDegConstraint>25</RoadMaxSlopeDegConstraint>
+  </Parameters>
+
+</PlacingZone>
+
+<Placement>
+	<Type>SURFACE</Type>
+	<Terraform>
+		<Enabled>0</Enabled>
+    <UseDefault>0</UseDefault>
+	</Terraform>
+	<GroundType>TERRAIN</GroundType>
+</Placement>

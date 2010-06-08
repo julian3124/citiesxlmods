@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>BUILDINGMAPZONE</Type>
+	<Serializable>0</Serializable>
+  <WithOptional1>DSFCOBUILDINGMAPDISPLAY</WithOptional1>
+  <WithOptional2>SLTCOSECTIONLAYOUTS</WithOptional2>
+  <WithOptional3>LSNCOCONTEXT</WithOptional3>
+</Entity>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Surface/MassPlacementTool/bldmap_res.layout</LayoutFile1>
+	<LayoutFile2>Data/Design/Layout/Surface/MassPlacementTool/bldmap_ind.layout</LayoutFile2>
+	<LayoutFile3>Data/Design/Layout/Surface/MassPlacementTool/bldmap_com.layout</LayoutFile3>
+	<LayoutFile4>Data/Design/Layout/Surface/MassPlacementTool/bldmap_res_t3.layout</LayoutFile4>
+	<LayoutFile5>Data/Design/Layout/Surface/MassPlacementTool/bldmap_office.layout</LayoutFile5>
+	<LayoutFile6>Data/Design/Layout/Surface/MassPlacementTool/bldmap_waste.layout</LayoutFile6>
+	<LayoutFile7>Data/Design/Layout/Surface/MassPlacementTool/bldmap_waste2.layout</LayoutFile7>
+</Layouts>
+<Placement>
+	<Type>SURFACE</Type>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+  <Terraform>
+    <Enabled>1</Enabled>
+    <UseDefault>0</UseDefault>
+    <DigDepth>0.2</DigDepth>
+    <LevelWidth>15</LevelWidth>
+    <CutWidth>0</CutWidth>
+    <AngleMax>50</AngleMax>
+  </Terraform>
+</Placement>
+
+<PlacingZone>
+
+  <Parameters>
+    <TurnToIntern>0</TurnToIntern>
+    <SortStripBuildingByLength>0</SortStripBuildingByLength>
+  </Parameters>
+  
+</PlacingZone>
+
+<SurfaceOperation>
+	<Type>EXPAND</Type>
+	<ExpandWidth>30</ExpandWidth>
+  <SelfSource>1</SelfSource>
+  <CreationCoverageMin>0.95</CreationCoverageMin>
+	<SubOperation>
+		<SurfaceOperation>
+			<Type>PATTERNFILL</Type>
+		</SurfaceOperation>
+	</SubOperation>
+</SurfaceOperation>
