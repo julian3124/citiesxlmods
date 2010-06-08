@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>ROADMAPZONE</Type>
+	<Serializable>0</Serializable>
+</Entity>
+
+<PlacingZone>
+
+  <Category>
+    <PrototypeFile>data/design/buildings/construction/road/R_Street_40x10.class</PrototypeFile>
+  </Category>
+
+  <Category>
+    Multilines
+    <PrototypeFile>data/design/buildings/construction/massplacementtool/multilines.class</PrototypeFile>
+  </Category>
+
+  <Category>
+    BuildingMap
+    <PrototypeFile>data/design/buildings/construction/massplacementtool/bldmap.class</PrototypeFile>
+  </Category>
+  
+	<Parameters>
+    <RoadmapType>LINE</RoadmapType>
+		<RoadmapDepth>0.5</RoadmapDepth>
+		<RoadmapDepthType>RELATIVE</RoadmapDepthType>
+		<RoadsFilter>
+			<Pass0_Order>STANDARD</Pass0_Order>
+			<Pass1_Order>NONE</Pass1_Order>
+		</RoadsFilter>
+		<InteriorMaxSlope>25</InteriorMaxSlope>
+		<RoadMaxSlopeDegConstraint>25</RoadMaxSlopeDegConstraint>
+	</Parameters>
+</PlacingZone>
+
+<Placement>
+	<Type>SURFACE</Type>
+	<Terraform>
+		<Enabled>0</Enabled>
+    <UseDefault>0</UseDefault>
+	</Terraform>
+	<GroundType>TERRAIN</GroundType>
+</Placement>
