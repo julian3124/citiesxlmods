@@ -1,8 +1,0 @@
-#summary Re-pack Size Limit??
-#labels sizelimit
-
-
-Is anyone having problems repacking larger files?
-
-
-Sometimes, whenever I compile a patch file of about 500KB in size or greater, the application freaks out. I can bypass this by creating several smaller patches...but that's time consuming.
