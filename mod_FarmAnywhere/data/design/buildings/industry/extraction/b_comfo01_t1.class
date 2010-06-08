@@ -8,7 +8,6 @@
 			<Model>""</Model>
 		</Fundament>
 		<EditModeOnly>0</EditModeOnly>
-		<SelectionLayer>Array_Agri_Posing</SelectionLayer>
 	</Display>
 	<Placement>
 		<Type>BUILDING</Type>
@@ -23,13 +22,6 @@
 			<CutWidth>20</CutWidth>
 			<AngleMax>35</AngleMax>
 		</Terraform>
-		<LayerConstraint>
-			<Layer01>
-				<LayerName>Array_Agri_Posing</LayerName>
-				<MinValue>100</MinValue>
-			</Layer01>
-		</LayerConstraint>
-		<LayerDisplay>Array_Agri_Posing</LayerDisplay>
 	</Placement>
 	<EntityPosition>
 		<CollisionShape>
@@ -117,7 +109,6 @@
 			<ConstructionCost>500</ConstructionCost>
 			<DestructionCost>50</DestructionCost>
 			<VisibleConditions>
-				<LayerExist1>Sim_Agri</LayerExist1>
 				<MinNbBuildingOnMapWithTagsRelock1>
 					<Name>GemCity</Name>
 					<Name2>TownHall</Name2>
@@ -146,8 +137,5 @@
 			<ModeName>player_lock_achievement</ModeName>
 			<ConstructionCost>500</ConstructionCost>
 			<DestructionCost>50</DestructionCost>
-			<VisibleConditions>
-				<LayerExist1>Sim_Agri</LayerExist1>
-			</VisibleConditions>
 		</ConditionSet2>
 	</Conditions>

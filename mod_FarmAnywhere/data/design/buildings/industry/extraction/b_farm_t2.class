@@ -88,7 +88,6 @@
 			<ConstructionCost>500</ConstructionCost>
 			<DestructionCost>50</DestructionCost>
 			<VisibleConditions>
-				<LayerExist1>Sim_Agri</LayerExist1>
 				<MinNbBuildingOnMapWithTagsRelock1>
 					<Name>Gemcity</Name>
 					<Name2>TownHall</Name2>
@@ -122,9 +121,6 @@
 			<ModeName>player_lock_achievement</ModeName>
 			<ConstructionCost>500</ConstructionCost>
 			<DestructionCost>50</DestructionCost>
-			<VisibleConditions>
-				<LayerExist1>Sim_Agri</LayerExist1>
-			</VisibleConditions>
 			<UnlockConditions>
 				<MoreBuildingOnMapThanThisByTagRelock1>
 					<Name>GemCity</Name>
