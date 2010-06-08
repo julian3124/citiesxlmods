@@ -39,10 +39,5 @@
     <UseDefault>0</UseDefault>
 	</Terraform>
   <LayerDisplay>Array_Oil_Posing</LayerDisplay>
-  <LayerConstraint>
-    <Layer01>
-      <LayerName>Array_Oil_Posing</LayerName>
-      <MinValue>100</MinValue>
-    </Layer01>
   </LayerConstraint>
 </Placement>

@@ -21,7 +21,6 @@
 		</Fundament>
 		<EditModeOnly>0</EditModeOnly>
 		<Thumb>""</Thumb>
-		<SelectionLayer>Array_Oil_Posing</SelectionLayer>
 	</Display>
 	<EntityPosition>
 		<CollisionShape>
@@ -50,14 +49,7 @@
 			<AngleMax>60</AngleMax>
 			<HeightMax>20</HeightMax>
 		</Terraform>
-		<LayerConstraint>
-			<Layer01>
-				<LayerName>Array_Oil_Posing</LayerName>
-				<MinValue>100</MinValue>
-			</Layer01>
-		</LayerConstraint>
 		<DefaultHeightOffset>0</DefaultHeightOffset>
-		<LayerDisplay>Array_Oil_Posing</LayerDisplay>
 	</Placement>
 	<Layouts>
 		<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
