@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Layout>
+	<Type>BASE</Type>
+	<BaseFileName>""</BaseFileName>
+	<Tag>""</Tag>
+	<FilterType>MAXIMUM</FilterType>	
+
+	<LayoutEntry>
+		<ID>Tree2901</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_all_sycamore01.class</PrototypeFile>
+		<Position>0,0,-0.40</Position>
+		<Rotation>0.05734623969,0.004545343574,-0.7910349965,0.6090602279</Rotation>
+		<Scale>2.9999985695,2.99999547,2.9999992251</Scale>
+	</LayoutEntry>
+</Layout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Entity>
+	<Type>EDITORELEMENT</Type>
+	<Serializable>0</Serializable>
+</Entity>
+<Display>
+	<Model>Data/Gfx/Editor/dummy-tree.sgbin</Model>
+	<Placeholder>""</Placeholder>
+</Display>
+<Placement>
+	<Type>EDITORELEMENT</Type>
+</Placement>
+<LayoutEntry>
+	<ID>Tree</ID>
+	<Type>TREE</Type>
+	<Tree>
+		<ResourceFile>Data/Gfx/Trees/Forest/t_ponytailpalm/queenpalm.spt</ResourceFile>
+		<PresenceProbability>1</PresenceProbability>
+		<RotationRandom_Min>-90</RotationRandom_Min>
+		<RotationRandom_Max>90</RotationRandom_Max>
+    <ScaleRandom_Min>0.2</ScaleRandom_Min>
+    <ScaleRandom_Max>0.26</ScaleRandom_Max>
+	</Tree>
+</LayoutEntry>

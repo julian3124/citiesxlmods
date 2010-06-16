@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Layout>
+	<Type>BASE</Type>
+	<BaseFileName>""</BaseFileName>
+	<Tag>""</Tag>
+	<FilterType>MAXIMUM</FilterType>	
+
+
+
+<LayoutEntry>
+		<ID>Tree</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/b_creepingjuniper.class</PrototypeFile>
+		<Position>0,0,-0.40</Position>
+		<Rotation>0,0.9999999404,0,0.9999999404</Rotation>
+		<Scale>2.2999989867,2.2999989867,1.4999989867</Scale>
+	</LayoutEntry>	
+
+
+<LayoutEntry>
+		<ID>Tree</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/b_creepingjuniper.class</PrototypeFile>
+		<Position>0.9,0,-0.40</Position>
+		<Rotation>0.9999999404,0.9999999404,0,0.9999999404</Rotation>
+		<Scale>2.2999989867,2.2999989867,1.4999989867</Scale>
+	</LayoutEntry>	
+<LayoutEntry>
+		<ID>Tree</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/b_creepingjuniper.class</PrototypeFile>
+		<Position>0,0.9,-0.40</Position>
+		<Rotation>0.9999999404,0.9999999404,0,0.9999999404</Rotation>
+		<Scale>2.2999989867,2.2999989867,1.4999989867</Scale>
+	</LayoutEntry>	
+<LayoutEntry>
+		<ID>Tree</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/b_creepingjuniper.class</PrototypeFile>
+		<Position>-0.9,0,-0.40</Position>
+		<Rotation>0.9999999404,0.9999999404,0,0.9999999404</Rotation>
+		<Scale>2.2999989867,2.2999989867,1.4999989867</Scale>
+	</LayoutEntry>	
+<LayoutEntry>
+		<ID>Tree</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/b_creepingjuniper.class</PrototypeFile>
+		<Position>0,-0.9,-0.40</Position>
+		<Rotation>0.9999999404,0.9999999404,0,0.9999999404</Rotation>
+		<Scale>2.2999989867,2.2999989867,1.4999989867</Scale>
+	</LayoutEntry>	
+
+
+
+</Layout>
+
+
+

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Layout>
+	<Type>BASE</Type>
+	<BaseFileName>""</BaseFileName>
+	<Tag>""</Tag>
+	<FilterType>MAXIMUM</FilterType>
+
+	<LayoutEntry>
+		<ID>Tree03</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>-21.49999428,-14.99998379,-0.40</Position>
+		<Rotation>0.01196545549,0.03271011263,-0.259213239,0.9651918411</Rotation>
+		<Scale>4,5,4</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree09</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>-6.000001431,33.50000381,-0.40</Position>
+		<Rotation>0.0180200804,0.07354409248,0.6086931825,0.7897842526</Rotation>
+		<Scale>3.9999992251,3.9999989271,3.9999985099</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree11</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>-32.99994659,23.99996948,-0.40</Position>
+		<Rotation>0.05435257033,0.007544692606,0.3808904588,0.9229904413</Rotation>
+		<Scale>2.9999989271,3.9999990463,2.9999989867</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree12</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>29.99998283,-36.99997711,-0.40</Position>
+		<Rotation>-0.04280190915,0.008155569434,0.6075772643,0.7930645347</Rotation>
+		<Scale>3.9999994636,3.9999993443,3.9999992847</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree15</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>28.49999428,-28.99999619,-0.40</Position>
+		<Rotation>0.02207926102,0.06111758947,-0.5007486343,0.8631500006</Rotation>
+		<Scale>3.9999983907,3.9999989271,3.999997139</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree170101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>36,-19.5,-0.40</Position>
+		<Rotation>0.08364596963,-0.001595000387,-0.4955548644,0.8645381331</Rotation>
+		<Scale>2.9999970794,2.999996841,2.9999970198</Scale>
+	</LayoutEntry>
+	<LayoutEntry>
+		<ID>Tree18</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>-19,-45,-0.40</Position>
+		<Rotation>0.009106509387,-0.1111690179,-0.3836630285,0.9167121649</Rotation>
+		<Scale>2.9999974966,2.9999978542,2.9999977946</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree19</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>-58.49999619,19.00000191,-0.40</Position>
+		<Rotation>0.02232035249,-0.007692981977,-0.7067540288,0.7070652843</Rotation>
+		<Scale>2.9999981523,2.999997735,2.9999974966</Scale>
+	</LayoutEntry>
+	
+	<LayoutEntry>
+		<ID>Tree21</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>-36.99998093,-4.137325959e-006,-0.40</Position>
+		<Rotation>-0.06909486651,0.06190863624,-0.6048907042,0.7908858657</Rotation>
+		<Scale>2.9999985695,2.9999988079,2.9999985695</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree0101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>40.49991989,4.99998951,-0.40</Position>
+		<Rotation>0.04047958553,0.003169059753,0.2581045032,0.9652633667</Rotation>
+		<Scale>3.9999970794,4.999997437,3.9999969602</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree26</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>-29.5,-17.5,-0.40</Position>
+		<Rotation>0.07886120677,-0.06136119738,-0.2528570294,0.9623299837</Rotation>
+		<Scale>3,3,3</Scale>
+	</LayoutEntry>
+	
+	<LayoutEntry>
+		<ID>Tree110101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>-25.49995232,20.49995232,-0.40</Position>
+		<Rotation>-0.03989486396,0.06476490945,0.7914136052,0.6065297723</Rotation>
+		<Scale>3.9999978542,4.9999984503,3.9999978542</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree0402</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>18.99993896,26.99990845,-0.40</Position>
+		<Rotation>0.05961336568,-0.008243863471,0.6064200997,0.7928637266</Rotation>
+		<Scale>3.9999963045,3.9999969602,3.9999967813</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree040201</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>56.49998856,6.999997616,-0.40</Position>
+		<Rotation>-0.001843644306,-0.01400392968,0.1305127591,0.9913460016</Rotation>
+		<Scale>2.9999976158,3.9999976754,2.9999976158</Scale>
+	</LayoutEntry>
+	
+	<LayoutEntry>
+		<ID>Tree0701010101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>53.99998474,-40.00001144,-0.40</Position>
+		<Rotation>-0.07142665237,0.006235317327,0.7897456884,0.6092299223</Rotation>
+		<Scale>3.9999961257,3.9999959469,3.9999954104</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree04020102</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>-43.99979019,-29.50009537,-0.40</Position>
+		<Rotation>0.0160354469,0.01918243989,0.9656998515,0.258454442</Rotation>
+		<Scale>3.999997139,4.9999970198,3.9999958277</Scale>		
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree040201020101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>-49.49982071,39.49985504,-0.40</Position>
+		<Rotation>-0.03285878897,-0.006811563857,0.9653650522,0.2587357163</Rotation>
+		<Scale>2.9999959469,2.9999955297,2.999995172</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree070102</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>52.68257523,22.62969589,-0.40</Position>
+		<Rotation>-0.07760566473,-0.02094622329,0.0817392841,0.9934068918</Rotation>
+		<Scale>2.9999976158,2.999997139,2.9999973774</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree1001</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>57.30450058,40.87060165,-0.40</Position>
+		<Rotation>-0.04427161068,-0.1652240157,0.255005002,0.9516898394</Rotation>
+		<Scale>3.9999989271,3.9999988675,3.9999986887</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree100101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>53.03820038,44.28300095,-0.40</Position>
+		<Rotation>0.1476580203,0.007118606474,0.2497699708,0.9569541812</Rotation>
+		<Scale>3.9999987483,3.9999988079,3.9999989867</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree180101</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_christmasscotchpine.class</PrototypeFile>
+		<Position>-51.49996567,-36.99997711,-0.40</Position>
+		<Rotation>-0.04873487726,0.01721669547,-0.7918128967,0.6085727811</Rotation>
+		<Scale>1.9999969006,2.9999970794,1.9999972582</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree110102</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>-59.99996567,-44.4999733,-0.40</Position>
+		<Rotation>0.03723470122,-0.0392546095,0.3831288815,0.9221089482</Rotation>
+		<Scale>4.9999993443,4.9999991059,4.9999993443</Scale>
+	</LayoutEntry>	
+	
+	<LayoutEntry>
+		<ID>Tree0702</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_italiancypress.class</PrototypeFile>
+		<Position>7.999974728,32.99996185,-0.40</Position>
+		<Rotation>0.01007717196,-0.002356507815,0.9238231182,-0.3826796412</Rotation>
+		<Scale>4.9999967217,4.9999967217,4.9999974966</Scale>
+	</LayoutEntry>
+
+	<LayoutEntry>
+		<ID>Tree2901</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_douglasfir.class</PrototypeFile>
+		<Position>21.99996567,-17.50000572,-0.40</Position>
+		<Rotation>0.05734623969,0.004545343574,-0.7910349965,0.6090602279</Rotation>
+		<Scale>2.9999985695,2.99999547,2.9999992251</Scale>
+	</LayoutEntry>
+<LayoutEntry>
+		<ID>Tree2901</ID>
+		<Type>TREE</Type>
+		<PrototypeFile>data/design/decoration/tree/allam/t_austrianpine01.class</PrototypeFile>
+		<Position>0,0,-0.40</Position>
+		<Rotation>0.05734623969,0.004545343574,-0.7910349965,0.6090602279</Rotation>
+		<Scale>4.9999985695,4.99999547,4.9999992251</Scale>
+	</LayoutEntry>
+</Layout>
