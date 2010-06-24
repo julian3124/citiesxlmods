@@ -1,0 +1,1254 @@
+
+g_TerrainFlags = -- on rajoute un _0 dans le code
+	{
+	"SNOW", 
+	"BEAC", 
+	"DSRT", 
+	"ISLA",
+	-- "ARTC",
+	}
+
+
+g_RessourcesFlags = -- on rajoute un _0 dans le code
+	{
+	"OILS", 
+	"AGRI", 
+	"WATR", 
+	"HLDY",
+	-- "MINE",
+	}
+
+g_RessourceTypeNb = 4
+g_TerrainTypeNb = 4
+
+MapMgr.g_FullMapList = 
+{ 
+	-- this is the full format. 
+	-- If ["Name"] is not defined (nil), the game will default to the name is "&"..label  
+	-- If ["Desc"] is not defined (nil), the game will default to the name is "&"..label.."_DESC"  
+	-- If ["Active"] is not defined (nil), the game will default to true 
+	-- If ["Special"] is not defined, the game will default to false 
+	-- If "Image" is not defined, it defaults to label..".dds" 
+
+
+	-- EXAMPLE
+	--	["MountRiver_01"] = {
+	--				["Name"] = "&MountRiver_01",
+	--				["Desc"] = "&MountRiver_01_DESC",
+	--				["Flags"] = {"OILS_0"}, 
+	--				["Active"] = true,
+	--				["Image"] = "MountRiver_01.dds",
+	--				["Playable"] = true,
+	--				["Special"] = true 
+	--				}, 
+
+
+-- VERSION BETA
+-- We wil remove physically the .LVL from the version
+-- So I prefer put the .LVL in commentary
+
+
+---------------------------------------------------------------------------
+-- MOUNTAINS
+---------------------------------------------------------------------------
+	["MountainValley_01"] = {
+				
+				-- seules les terrains (de g_TerrainFlags) sont prises en compte dans le champ "flags" si il y a un champ resources 
+				-- Ca sert à rien de mettre des ressources dans flags si il y a un tableau dessous
+				
+				["Flags"] = {"SNOW_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+				
+				Editions = {},
+				
+				Difficulty = 90, 					-- exprimé en % 
+				
+				Surface = 25, 						-- exprimé en % 
+				
+				TransportAvailability = 50, -- exprimé en % 
+				
+				["Active"] = true,
+				["Image"] = "MountainValley_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["MountainValley_03"] = {
+				["Flags"] = {"SNOW_0"},
+
+				Resources = {
+							OILS = 0,
+							WATR = 2,
+							AGRI = 0,
+							HLDY = 2,
+							},
+				
+				Editions = {},
+				
+				Difficulty = 90,
+				
+				Surface = 20,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountainValley_03.dds",
+				["Playable"] = true,				
+				}, 	
+
+-----------------------------------------
+	["MountainRiver_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 3,
+							AGRI = 1,
+							HLDY = 0,
+							},
+				
+				Editions = {"LIMITED"},
+				
+				Difficulty = 70,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountainRiver_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["MountainLake_01"] = {
+				["Flags"] = {"SNOW_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 3,
+							AGRI = 0,
+							HLDY = 1,
+							},
+				
+				Editions = {"DEMO"},	
+				
+				Difficulty = 90,
+				
+				Surface = 30,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountainLake_01.dds",
+				["Playable"] = true, 
+				},			
+
+-----------------------------------------
+	["MountainValley_02"] = {
+				["Flags"] = {"SNOW_0"}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 2,
+							AGRI = 0,
+							HLDY = 1,
+							},
+				
+				Editions = {},
+				
+				Difficulty = 70,
+				
+				Surface = 30,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountainValley_02.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+---------------------------------------------------------------------------
+-- VALLEYS
+---------------------------------------------------------------------------
+	["MountPlainsRiver_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 1,
+							},
+				
+				Editions = {},
+				
+				Difficulty = 40,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountPlainsRiver_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["CliffCanyonRiver_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 60,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CliffCanyonRiver_01.dds",
+				["Playable"] = true,				
+				}, 		
+
+-----------------------------------------
+	["MountPlainsLake_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 1,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountPlainsLake_01.dds",
+				["Playable"] = true,				
+				}, 			
+
+-----------------------------------------
+	["MountRiver_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+
+				["Active"] = true,
+				["Image"] = "MountRiver_01.dds",
+				["Playable"] = true,
+				}, 
+
+-----------------------------------------
+	["CreekPlainsRiver_01"] = {
+				["Flags"] = {"BEAC_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 2,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CreekPlainsRiver_01.dds",
+				["Playable"] = true, 
+				},			
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
+-- CANYONS
+---------------------------------------------------------------------------
+	["BigCanyon_01"] = {
+				["Flags"] = {"DSRT_0"},
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 3,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "BigCanyon_01.dds",
+				["Playable"] = true, 
+				}, 	
+
+-----------------------------------------
+	["MountSaintHelen_01"] = {
+				["Flags"] = {"DSRT_0"}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 2,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountSaintHelen_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RockyDesert_01"] = {
+				["Flags"] = {"DSRT_0"},
+
+				Resources = {
+							OILS = 3,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 70,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RockyDesert_01.dds",
+				["Playable"] = true, 
+				}, 	
+
+-----------------------------------------
+	["RoughCanyon_01"] = {
+				["Flags"] = {"DSRT_0"}, 
+
+				Resources = {
+							OILS = 3,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 90,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RoughCanyon_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+-----------------------------------------
+	["GrassyCanyonRiver_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 90,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "GrassyCanyonRiver_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+---------------------------------------------------------------------------
+-- GREEN PLAINS
+---------------------------------------------------------------------------
+	["ParisWithRoads"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+							
+				AssetName = "New_York",		-- Don't touch this, otherwise game will crash (GlobexCo)	
+		
+				Editions = {},	
+		
+				Difficulty = 70,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "Paris_01.dds",
+				["Playable"] = true, 
+				--["Special"] = true, 
+				}, 
+
+-----------------------------------------
+	["PlainsRiver_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 3,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 80,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "PlainsRiver_01.dds",
+				["Playable"] = true, 
+				}, 	
+
+-----------------------------------------
+	["PlainsRiverLake_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 3,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 80,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "PlainsRiverLake_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["PlainsLakeVolcano_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 1,
+							HLDY = 1,
+							},
+							
+				Editions = {"DEMO",},	
+				
+				Difficulty = 20,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "PlainsLakeVolcano_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+---------------------------------------------------------------------------
+-- COASTS
+---------------------------------------------------------------------------
+	["BigIsland_01"] = {
+				["Flags"] = {"BEAC_0","ISLA_0"}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 0,
+							AGRI = 1,
+							HLDY = 2,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 80,
+				
+				TransportAvailability = 30,
+				
+				["Active"] = true,
+				["Image"] = "BigIsland_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["Beach_01"] = {
+				["Flags"] = {"BEAC_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 2,
+							HLDY = 2,
+							},
+							
+				
+				Editions = {"DEMO",},	
+				
+				Difficulty = 70,
+				
+				Surface = 50,
+				
+				TransportAvailability = 30,
+				
+				["Active"] = true,
+				["Image"] = "Beach_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["MultiIsland_01"] = {
+				["Flags"] = {"ISLA_0"}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 2,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 90,
+				
+				Surface = 50,
+				
+				TransportAvailability = 30,
+				
+				["Active"] = true,
+				["Image"] = "MultiIsland_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RoughCoast_01"] = {
+				["Flags"] = {"BEAC_0","DSRT_0"}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 0,
+							AGRI = 1,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 50,
+				
+				TransportAvailability = 30,
+				
+				["Active"] = true,
+				["Image"] = "RoughCoast_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+
+---------------------------------------------------------------------------
+-- OTHERS (on PLANET)
+---------------------------------------------------------------------------
+	["RoughPlains_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 2,
+							WATR = 0,
+							AGRI = 1,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RoughPlains_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["CoastMount_01"] = {
+				["Flags"] = {"BEAC_0"}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 1,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CoastMount_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["CliffPlainsRiver_01"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {"LIMITED"},
+				
+				Difficulty = 40,
+				
+				Surface = 80,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CliffPlainsRiver_01.dds",
+				["Playable"] = true,	
+				}, 		
+
+-----------------------------------------
+	["CreekPlains_01"] = {
+				["Flags"] = {"BEAC_0"},
+
+				Resources = {
+							OILS = 2,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 2,
+							},
+				
+				Editions = {"LIMITED"},
+				
+				Difficulty = 70,
+				
+				Surface = 70,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CreekPlains_01.dds",
+				["Playable"] = true,				
+				}, 		
+
+-----------------------------------------
+	["BigIsland_02"] = {
+				["Flags"] = {"BEACH_0", "ISLA_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 1,
+							HLDY = 2,
+							},
+				
+				Editions = {"LIMITED"},
+				
+				Difficulty = 90,
+				
+				Surface = 30,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "BigIsland_02.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RoughPlainsRiver_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RoughPlainsRiver_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["MountPlains_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 2,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 60,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "MountPlains_01.dds",
+				["Playable"] = true, 
+				}, 			
+
+-----------------------------------------
+	["LittleRiverFalls_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "LittleRiverFalls_01.dds",				
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["PlainsBigLake_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 3,
+							AGRI = 1,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 75,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "PlainsBigLake_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RockyMountain_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 40,
+				
+				Surface = 20,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RockyMountain_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RoughPlainsMultiLake_01"] = {
+				["Flags"] = {"DSRT_0"}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 1,
+							AGRI = 0,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 30,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RoughPlainsMultiLake_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["CliffCoast_01"] = {
+				["Flags"] = {"BEACH_0","ISLA_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 2,
+							HLDY = 2,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "CliffCoast_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["LakeIsland_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 2,
+							AGRI = 0,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "LakeIsland_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["RoughCoast_02"] = {
+				["Flags"] = {"DSRT_0","BEAC_0"}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 1,
+							AGRI = 1,
+							HLDY = 0,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RoughCoast_02.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+-----------------------------------------
+	["RockyDesert_02"] = {
+				["Flags"] = {"DSRT_0"}, 
+
+				Resources = {
+							OILS = 3,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 0,
+							},
+				
+				Editions = {"LIMITED"},
+				
+				Difficulty = 70,
+				
+				Surface = 30,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RockyDesert_02.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+-----------------------------------------
+	["Peninsula_01"] = {
+				["Flags"] = {"BEAC_0"}, 
+
+				Resources = {
+							OILS = 1,
+							WATR = 1,
+							AGRI = 1,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 20,
+				
+				Surface = 50,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "Peninsula_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+---------------------------------------------------------------------------
+-- MS26
+---------------------------------------------------------------------------
+	["RioJaneiro_01"] = {
+				["Flags"] = {"BEAC_0"}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "RioJaneiro_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+-----------------------------------------
+	["CliffCoast_02"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 0,
+							WATR = 1,
+							AGRI = 2,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 30,
+				
+				Surface = 75,
+				
+				TransportAvailability = 75,
+				
+				["Active"] = true,
+				["Image"] = "CliffCoast_02.dds",
+				["Playable"] = true, 
+				}, 
+
+
+-----------------------------------------
+	["CraterPlains_01"] = {
+				["Flags"] = {}, 
+
+				Resources = {
+							OILS = 2,
+							WATR = 1,
+							AGRI = 0,
+							HLDY = 1,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 30,
+				
+				Surface = 60,
+				
+				TransportAvailability = 75,
+				
+				["Active"] = true,
+				["Image"] = "CraterPlains_01.dds",
+				["Playable"] = true, 
+				}, 
+
+
+
+
+
+-- MS27 en commentaire pour le moment
+---------------------------------------------------------------------------
+-- MS27
+---------------------------------------------------------------------------
+	["NewYorkWithRoads"] = {
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+							
+				AssetName = "New_York",			
+		
+				Editions = {},	
+		
+				Difficulty = 70,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "NewYorkWithRoads.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+	["AtolIsland_01"] = { -- !NOT WORKING! (GlobexCo) -> map missing?
+				["Flags"] = {},
+
+				Resources = {
+							OILS = 0,
+							WATR = 0,
+							AGRI = 0,
+							HLDY = 3,
+							},
+				
+				Editions = {},	
+				
+				Difficulty = 70,
+				
+				Surface = 40,
+				
+				TransportAvailability = 50,
+				
+				["Active"] = true,
+				["Image"] = "AtolIsland_01.dds",
+				["Playable"] = true, 
+				}, 
+
+-----------------------------------------
+--	["MoutainGlacier_01"] = {
+--				["Flags"] = {},
+
+--				Resources = {
+--							OILS = 0,
+--							WATR = 3,
+--							AGRI = 0,
+--							HLDY = 1,
+--							},
+				
+--				Editions = {},	
+				
+--				Difficulty = 70,
+				
+--				Surface = 40,
+				
+--				TransportAvailability = 50,
+				
+--				["Active"] = true,
+--				["Image"] = "MoutainGlacier_01.dds",
+--				["Playable"] = true, 
+--				}, 
+
+-----------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------
+-- DEPECRATED
+---------------------------------------------------------------------------
+--	["HongKong_01"] = { !NOT WORKING! (GlobexCo)
+--			["Flags"] = {},
+	--			
+		--		Resources = {
+			--				OILS = 0,
+				--			WATR = 0,
+					--		AGRI = 0,
+						--	HLDY = 3,
+							--},
+							
+--				AssetName = "New_York",			
+	--	
+		--		Editions = {},	
+		--
+			--	Difficulty = 70,
+				
+			--	Surface = 40,
+				
+			--	TransportAvailability = 50,
+				
+--				["Active"] = true
+	--			["Image"] = "HongKong_01.dds",
+		--		["Playable"] = true, 
+			--	}, 
+
+-----------------------------------------
+--	["Coast_01"] = {
+--				["Flags"] = {"BEAC_0","OILS_0","AGRI_0"}, 
+--				["Image"] = "Coast_01.dds",
+--				["Playable"] = false, 
+--				}, 
+
+-----------------------------------------
+--	["BigIsland_03"] = {
+--				["Flags"] = {"BEAC_0","OILS_0","AGRI_0"}, 
+--				["Image"] = "BigIsland_03.dds",
+--				["Playable"] = false, 
+--				}, 
+
+-----------------------------------------
+--	["MountLake_01"] = {
+--				["Flags"] = {"OILS_0","AGRI_0"}, 
+--				["Image"] = "MountLake_01.dds",
+--				["Playable"] = false, 
+--				}, 
+
+-----------------------------------------
+--	["GrassyCanyonRiver_02"] = {
+--				["Flags"] = {"OILS_0","AGRI_0"},
+--				["Image"] = "GrassyCanyonRiver_02.dds",
+--				["Playable"] = false,
+--				}, 	
+
+}

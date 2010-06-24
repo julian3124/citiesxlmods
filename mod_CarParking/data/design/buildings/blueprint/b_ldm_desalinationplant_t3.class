@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<Tag>Decoration;Landmark;LimitedEdition;T4;UnqualifiedWorker;Executive;QualifiedWorker;GemCity;MS18</Tag>
+<Display>
+	<Model>Data/Gfx/Building/b_ldm_desalinationplant_t3.sgbin</Model>
+	<Placeholder>Data/Gfx/Placeholder/b_aaind_t3.sgbin</Placeholder>
+	<Fundament>
+		<Use>1</Use>
+		<Model>""</Model>
+	</Fundament>
+	<EditModeOnly>0</EditModeOnly>
+	<Thumb>""</Thumb>
+	<SelectionLayer>Landmark</SelectionLayer>
+</Display>
+<EntityPosition>
+	<CollisionShape>
+		<Dimension>460,340</Dimension>
+		<Height>88.92358398</Height>
+		<FundamentHeight>40</FundamentHeight>
+		<Use>1</Use>
+	</CollisionShape>
+	<UsePlugOrientationForSnap>1</UsePlugOrientationForSnap>
+	<AllowSnapAround>1</AllowSnapAround>
+	<GardenAsCarpet>0</GardenAsCarpet>
+	<MustConnectToRoad>1</MustConnectToRoad>
+</EntityPosition>
+<Placement>
+	<Type>BUILDING</Type>
+	<GroundType>TERRAIN</GroundType>
+	<DelegatePrototype>""</DelegatePrototype>
+	<OverPickable>1</OverPickable>
+	<Merge>0</Merge>
+	<LinkPrototypeFile>""</LinkPrototypeFile>
+	<Terraform>
+		<Enabled>1</Enabled>
+		<LevelWidth>15</LevelWidth>
+		<CutWidth>0</CutWidth>
+		<UseDefault>1</UseDefault>
+		<DigDepth>0.3000000119</DigDepth>
+		<AngleMax>60</AngleMax>
+		<HeightMax>20</HeightMax>
+		<Type>NORMAL</Type>
+	</Terraform>
+	<LayerDisplay>Landmark</LayerDisplay>
+	<DefaultHeightOffset>0</DefaultHeightOffset>
+	<SnapPlugToPlug>0</SnapPlugToPlug>
+</Placement>
+<Layouts>
+	<UndefinedAdjustHeight>0</UndefinedAdjustHeight>
+	<LayoutFile1>Data/Design/Layout/Landmark/b_ldm_desalinationplant_t3_Base.layout</LayoutFile1>
+</Layouts>
+<View>
+	<Panel>BuildingSelection</Panel>
+	<NameKey>&B_LDM_DESALINATIONPLANT_T3</NameKey>
+	<NameKeySim>&B_LDM_DESALINATIONPLANT_T3_SIM</NameKeySim>
+	<DescriptionKey>&B_LDM_DESALINATIONPLANT_T3_DES2</DescriptionKey>
+	<Param1Key>&B_LDM_DESALINATIONPLANT_T3_PARAM1</Param1Key>
+	<Value1Key>&B_LDM_DESALINATIONPLANT_T3_VALUE1</Value1Key>
+	<Param2Key>&B_LDM_DESALINATIONPLANT_T3_PARAM2</Param2Key>
+	<Value2Key>&B_LDM_DESALINATIONPLANT_T3_VALUE2</Value2Key>
+	<Param3Key>&B_LDM_DESALINATIONPLANT_T3_PARAM3</Param3Key>
+	<Value3Key>&B_LDM_DESALINATIONPLANT_T3_VALUE3</Value3Key>
+</View>
+<Entity>
+	<Type>BUILDING</Type>
+	<Serializable>0</Serializable>
+	<WithOptional1>SCZCOJOBPROVIDER</WithOptional1>
+	<WithOptional2>SLACOLAYER</WithOptional2>
+	<WithOptional3>SCCORESOURCEAGENT</WithOptional3>
+</Entity>
+<JobProvider>
+	<MaxJobPerCulture>
+		<Suit>8</Suit>
+		<Elite>4</Elite>
+	</MaxJobPerCulture>
+	<JobAttractivityPerCulture>
+		<Suit>50</Suit>
+		<Elite>50</Elite>
+	</JobAttractivityPerCulture>
+</JobProvider>
+<ResourceComponent>
+	<MaxProduction>
+		<Production1>
+			<ResourceName>RHOL_1</ResourceName>
+			<ResourceNumber>2000</ResourceNumber>
+			<ResourceUnitMinPriceBenef>0</ResourceUnitMinPriceBenef>
+		</Production1>
+	</MaxProduction>
+</ResourceComponent>
+<Layer>
+	<Shape01>
+		<LayerName>Landmark</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>26</InfluenceMax>
+		<InfluenceMin>13</InfluenceMin>
+		<Radius>740</Radius>
+	</Shape01>
+	<Shape02>
+		<LayerName>LowLife</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>20</InfluenceMax>
+		<InfluenceMin>0</InfluenceMin>
+		<Radius>200</Radius>
+	</Shape02>
+	<Shape03>
+		<LayerName>AllAm</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>20</InfluenceMax>
+		<InfluenceMin>0</InfluenceMin>
+		<Radius>200</Radius>
+	</Shape03>
+	<Shape04>
+		<LayerName>Suit</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>20</InfluenceMax>
+		<InfluenceMin>0</InfluenceMin>
+		<Radius>200</Radius>
+	</Shape04>
+	<Shape05>
+		<LayerName>Elite</LayerName>
+		<Type>CIRCLE</Type>
+		<InfluenceMax>20</InfluenceMax>
+		<InfluenceMin>0</InfluenceMin>
+		<Radius>200</Radius>
+	</Shape05>
+</Layer>
+<BudgetAgent>
+	<CitizenProvider>0</CitizenProvider>
+	<UpkeepCost>15000</UpkeepCost>
+	<IsCityLink>no</IsCityLink>
+	<CityLinkPlanetRange>0</CityLinkPlanetRange>
+	<IsPublicBuilding>1</IsPublicBuilding>
+	<IsAnnexBuilding>0</IsAnnexBuilding>
+	<TaxesMinMalus>0</TaxesMinMalus>
+	<TaxesMaxMalus>-5</TaxesMaxMalus>
+	<BudgetExpenseCategory>SERVICES_MULTISERVICE</BudgetExpenseCategory>
+	<HasFinancialProtection>0</HasFinancialProtection>
+	<MaxMonthlyCost>2000</MaxMonthlyCost>
+</BudgetAgent>
+<Construction>
+	<IsDestroyable>1</IsDestroyable>
+	<IsZoneConstruction>0</IsZoneConstruction>
+	<PlacementType>BUILDING</PlacementType>
+	<Constructing>
+		<TimeStep>40</TimeStep>
+	</Constructing>
+	<Destroying>
+		<TimeStep>16</TimeStep>
+	</Destroying>
+</Construction>
+<Conditions>
+	<ConditionSet1>
+		<ModeName>player_lock_all</ModeName>
+		<ConstructionCost>150000</ConstructionCost>
+		<DestructionCost>15000</DestructionCost>
+		<VisibleConditions>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>Gemcity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+			<MaxBuildingOnMapRelock1>
+				<Name>Data/Design/Buildings/Blueprint/b_ldm_berlinvictorytower_t3.class</Name>
+				<Number>0</Number>
+			</MaxBuildingOnMapRelock1>
+			
+				<ConditionTag1>LimitedEdition</ConditionTag1>
+			
+			<NbCitizen>135</NbCitizen>
+		</VisibleConditions>
+		<UnlockConditions>
+			<NbCitizen>243</NbCitizen>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>Gemcity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+		</UnlockConditions>
+	</ConditionSet1>
+	<ConditionSet2>
+		<ModeName>player_lock_achievement</ModeName>
+		<ConstructionCost>150000</ConstructionCost>
+		<DestructionCost>15000</DestructionCost>
+		<VisibleConditions>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>Gemcity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+			<MaxBuildingOnMapRelock1>
+				<Name>Data/Design/Buildings/Blueprint/b_ldm_berlinvictorytower_t3.class</Name>
+				<Number>0</Number>
+			</MaxBuildingOnMapRelock1>
+			
+				<ConditionTag1>LimitedEdition</ConditionTag1>
+			
+			<NbCitizen>135</NbCitizen>
+		</VisibleConditions>
+		<UnlockConditions>
+			<NbCitizen>243</NbCitizen>
+			<MinNbBuildingOnMapWithTagsRelock1>
+				<Name>Gemcity</Name>
+				<Name2>TownHall</Name2>
+				<Number>1</Number>
+			</MinNbBuildingOnMapWithTagsRelock1>
+		</UnlockConditions>
+	</ConditionSet2>
+</Conditions>

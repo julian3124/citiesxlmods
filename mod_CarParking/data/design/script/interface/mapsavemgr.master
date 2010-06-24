@@ -1,0 +1,1987 @@
+--require "gd"
+
+MapSaveMgr = MapSaveMgr or {}
+
+MapSaveMgr.CurrentRegion = MapSaveMgr.CurrentRegion or 0
+MapSaveMgr.CurrentMap = MapSaveMgr.CurrentMap or 0
+
+MapSaveMgr.Directory = "solo"
+
+MapSaveMgr.SaveFileName = "fn.dat"
+
+MapSaveMgr.SaveFilePath = MapSaveMgr.Directory .. "/"..MapSaveMgr.SaveFileName 
+
+MapSaveMgr.RegionStats =  MapSaveMgr.RegionStats or {}
+
+MapSaveMgr.LER = {6,7,}
+
+MapSaveMgr.flagGotoPlanet = false
+MapSaveMgr.flagQuit = false
+MapSaveMgr.flagGotoRegion = false
+
+MapSaveMgr.ShowPictures = true
+
+MapSaveMgr.ContractsTable = MapSaveMgr.ContractsTable or {}
+
+MapSaveMgr.IconIds = MapSaveMgr.IconIds or {}
+
+MapSaveMgr.SaveNameTable = {}
+
+FileSystem:DoFile("Data\\Design\\Script\\Interface\\SoloSlotList.data")
+
+MapSaveMgr.Regions = {
+    -- IP : Port : PlanetId
+
+			Region1   = {
+				Map1   = {"&LakeIsland_01", "LakeIsland_01", "&LakeIsland_01_Desc","302","167","5"},
+				Map2   = {"&MountainValley_03", "MountainValley_03", "&MountainValley_03_Desc","100","343","10"},
+				Map3   = {"&MountPlains_01", "MountPlains_01", "&MountPlains_01_Desc","543","344","-15"},
+				Map4   = {"&MountainLake_01", "MountainLake_01", "&MountainLake_01_Desc","555","149","3"},
+				Map5   = {"&MountainValley_02", "MountainValley_02", "&MountainValley_02_Desc","230","574","15"},
+				CamPos = { 0.81286299228668,-0.84263867139816,0.76915800571442}
+				},
+
+			Region2   = {
+				Map1   = {"&MountPlainsRiver_01", "MountPlainsRiver_01", "&MountPlainsRiver_01_Desc","168","82","5"},
+				Map2   = {"&CliffCanyonRiver_01", "CliffCanyonRiver_01", "&CliffCanyonRiver_01_Desc","122","310","10"},
+				Map3   = {"&MountPlainsLake_01", "MountPlainsLake_01", "&MountPlainsLake_01_Desc","413","141","-15"},
+				Map4   = {"&MountRiver_01", "MountRiver_01", "&MountRiver_01_Desc","490","550","-5"},
+				Map5   = {"&CreekPlainsRiver_01", "CreekPlainsRiver_01", "&CreekPlainsRiver_01_Desc","569","315","15"},
+				CamPos = { 0.064842440187931,1.2884284257889,0.54602068662643}
+				},
+
+			Region3   = {
+				Map1   = {"&BigCanyon_01", "BigCanyon_01", "&BigCanyon_01_Desc","340","399","5"},
+				Map2   = {"&MountSaintHelen_01", "MountSaintHelen_01", "&MountSaintHelen_01_Desc","611","307","10"},
+				Map3   = {"&RockyDesert_01", "RockyDesert_01", "&RockyDesert_01_Desc","100","120","-10"},
+				Map4   = {"&RoughCanyon_01", "RoughCanyon_01", "&RoughCanyon_01_Desc","380","60","5"},
+				Map5   = {"&RoughPlainsMultiLake_01", "RoughPlainsMultiLake_01", "&RoughPlainsMultiLake_01_Desc","80","500","15"},
+				CamPos = { 0.94342231750488,-1.0258203744888,-0.1415538340807}
+				},
+
+			Region4   = {
+				Map1   = {"&LittleRiverFalls_01", "LittleRiverFalls_01", "&LittleRiverFalls_01_Desc","75","322","5"},
+				Map2   = {"&RoughPlainsRiver_01", "RoughPlainsRiver_01", "&RoughPlainsRiver_01_Desc","249","111","10"},
+				Map3   = {"&PlainsRiver_01", "PlainsRiver_01", "&PlainsRiver_01_Desc","449","248","-15"},
+				Map4   = {"&PlainsRiverLake_01", "PlainsRiverLake_01", "&PlainsRiverLake_01_Desc","197","525","-5"},
+				Map5   = {"&PlainsLakeVolcano_01", "PlainsLakeVolcano_01", "&PlainsLakeVolcano_01_Desc","584","498","15"},
+				Map6   = {"&NewYorkWithRoads", "NewYorkWithRoads", "&NewYorkWithRoads_01_Desc","584","498","15"},
+				Map7   = {"&ParisWithRoads", "ParisWithRoads", "&ParisWithRoads_Desc","584","498","15"},
+				CamPos = { -0.81135696172714,-1.1312497854233,0.15609087049961}
+				},
+
+			Region5   = {
+				Map1   = {"&BigIsland_01", "BigIsland_01", "&BigIsland_01_Desc","118","156","5"}, --350 682
+				Map2   = {"&Beach_01", "Beach_01", "&Beach_01_Desc","400","402","-10"}, -- 188 86
+				Map3   = {"&MultiIsland_01", "MultiIsland_01", "&MultiIsland_01_Desc","612","452","-12"},
+				Map4   = {"&Peninsula_01", "Peninsula_01", "&Peninsula_01_Desc","139","520","-8"},
+				Map5   = {"&RoughCoast_01", "RoughCoast_01", "&RoughCoast_01_Desc","480","120","18"}, --280 280 
+				Map6   = {"&RioJaneiro_01", "RioJaneiro_01", "&RioJaneiro_01_Desc","480","120","18"},
+				--Map7   = {"&name_01", "name_01", "&name_01_Desc","139","520","-8"},
+				CamPos = { -1.1310260295868,0.65655720233917,0.50209903717041}
+				},
+				
+			Region6   = {
+				Map1   = {"&MountainRiver_01", "MountainRiver_01", "&MountainRiver_01_Desc","118","156","5"}, --350 682
+				Map2   = {"&BigIsland_02", "BigIsland_02", "&BigIsland_02_Desc","400","402","-10"}, -- 188 86
+				Map3   = {"&CliffPlainsRiver_01", "CliffPlainsRiver_01", "&CliffPlainsRiver_01_Desc","612","452","-12"},
+				Map4   = {"&CreekPlains_01", "CreekPlains_01", "&CreekPlains_01_Desc","139","520","-8"},
+				Map5   = {"&RockyDesert_02", "RockyDesert_02", "&RockyDesert_02_Desc","480","120","18"}, --280 280 
+				CamPos = { 1.327880859375,0.78363186120987,0.43101164698601}
+				}	,
+}
+
+function MapSaveMgr:CheckSoloCityName(name)
+	local IsFreeName = true
+	for k, v in pairs (MapSaveMgr.SaveNameTable) do
+		if ( v ~= nil ) then
+			if ( v["CityName"] == name) then
+				IsFreeName = false
+			end
+		end
+	end
+	if (IsFreeName == true ) then
+		MapSaveMgr:StartNewCity(name)
+		SCALEFORMMGR:DoActionScript("REGIONSELECT","HideCreateCityPane")
+	else
+		--SCALEFORMMGR:DoActionScript("REGIONSELECT","CityNameAlreadyInUse")
+		Interface:SetElemValue ("REGIONSELECT", "FullPanelCreateCity.ErrorText2", "_alpha",100) --TODO_LOC
+		Interface:SetText("REGIONSELECT", "FullPanelCreateCity.ErrorText2.ErrorMessage", "&CityNameAlreadyExists" )
+	end
+end
+
+
+function MapSaveMgr:IsLERA(nb)
+	for k,v in pairs (MapSaveMgr.LER) do
+		if (v == nb) then 
+			return RightsMgr:IsLE()
+		end
+	end
+	
+	return true
+		
+end
+
+function MapSaveMgr:mapSelectedToPlay(Map)
+	local MapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(Map)][2]
+	return MapName
+end
+
+function MapSaveMgr:SetCurrentRegion(Region)
+	MapSaveMgr.CurrentRegion = Region
+end
+
+function MapSaveMgr:SeeCurrentRegion(RegionNb)
+
+	local Cam= MapSaveMgr.Regions["Region"..RegionNb].CamPos
+	LOG_INFO("Setting current camera to ="..Cam[1]..","..Cam[2]..","..Cam[3])
+	CameraAPI:SetCameraName("COUNTRY")
+	CameraAPI:SetCameraPlanetDir(Cam[1], Cam[2], Cam[3])
+	
+end
+
+
+MapSaveMgr.CurrentOnlineMap = ""
+
+function MapSaveMgr:DoesCurrentMapAllowGemType(_Type)
+	
+	local MapName 
+	
+	if (InterfaceMgr.SoloMode) then 
+	
+		--local fn =  MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap)
+
+		MapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(MapSaveMgr.CurrentMap)][2]
+		
+		if (MapName == nil) then 
+			return false
+		end
+		
+	else
+	
+		MapName = MapSaveMgr.CurrentOnlineMap
+		
+
+	end	
+	
+	return  MapSaveMgr:DoesMapAllowGemType(MapName, _Type)
+	--local 
+
+	--MapSaveMgr.CurrentRegion 
+	
+	--MapSaveMgr.CurrentMap 
+
+
+end
+
+function MapSaveMgr:DoesMapAllowGemType(_mapName, _Type)
+
+	if (_Type == "GemSki") or(_Type == "Ski") or (_Type == "SKI") then
+		if (MapMgr.g_FullMapList[_mapName] ~= nil) and (MapMgr.g_FullMapList[_mapName].Flags ~= nil) then
+			for k,v in pairs (MapMgr.g_FullMapList[_mapName].Flags) do 
+				if (v == "SNOW_0") then 
+					return true
+				end	
+			end	
+		end	
+		
+		return false
+	end
+	
+	if (_Type == "GemBeach") or(_Type == "Beach") or (_Type == "BEACH") then
+		if (MapMgr.g_FullMapList[_mapName] ~= nil) and (MapMgr.g_FullMapList[_mapName].Flags ~= nil) then
+			for k,v in pairs (MapMgr.g_FullMapList[_mapName].Flags) do 
+				if (v == "BEAC_0") then 
+					return true
+				end	
+			end	
+		end	
+		
+		return false
+	end
+	
+
+end
+
+
+function MapSaveMgr:GotoCamera(RegionNb)
+
+	local Cam= MapSaveMgr.Regions["Region"..RegionNb].CamPos
+	LOG_INFO("Setting current camera to ="..Cam[1]..","..Cam[2]..","..Cam[3])
+	CameraAPI:SetCameraName("SOLOCOUNTRY2")
+	CameraAPI:SetCameraPlanetDir(Cam[1], Cam[2], Cam[3])
+end
+
+function MapSaveMgr:CreateScreenShot(FileName)
+    LOG_INFO("Trying to take a screenshot: " .. FileName)
+    Command:Post( "SCREENSHOT", FileName, "400x256" )
+end
+
+function MapSaveMgr:TreatLevelScreenShot(Tab)
+	LOG_ERROR("now treating screenshot : "..Tab.FileName)
+end
+
+
+
+function MapSaveMgr:TreatScreenShot(Tab)
+	--LOG_ERROR("now treating screenshot : "..Tab.FileName)
+	
+	-- should never be called ?
+	do return end
+	
+	
+end
+
+	
+function MapSaveMgr:SetCurrentMap(Map)
+	MapSaveMgr.CurrentMap = Map
+end
+
+function MapSaveMgr:GotoSelectMap()
+	MapSaveMgr:InitRegion() 
+	MapSaveMgr.SaveTimeCounter = nil
+end
+
+
+
+
+
+function MapSaveMgr:InitRegion()
+
+    for index = 1, 5 do
+		--LOG_INFO("Index = "..tostring(index));
+		local Name = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][1]
+		local LevelName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][1]
+		local Desc = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][3]
+		local Diff = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][7]
+
+		local X = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][4]
+		local Y = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][5]
+		local rot = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][6]
+
+
+		local MapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(index)][2]
+		
+		local Pop = 0
+		local CashFlow = 0 
+		local Tourists = 0
+		local PopSat = 0
+		local Jobless = 0
+		
+		--if MapMgr.g_FullMapList[MapName] == nil or MapMgr.g_FullMapList[MapName]["Image"] == nil then 
+		local Image = "Data/Interface/DDSTexture/Maps/"..MapName..".dds"
+		--else
+			--Image = "Data/Interface/DDSTexture/Maps/"..MapMgr.g_FullMapList[MapName]["Image"]
+		--end
+		
+		local Playable = 0
+--		MapSaveMgr.CurrentMapPlayable = false
+		
+		if MapMgr.g_FullMapList[MapName] ~= nil and MapMgr.g_FullMapList[MapName].Playable ~= nil and MapMgr.g_FullMapList[MapName].Playable == true then 
+			Playable = 1	
+		end	
+		
+		local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, index)
+		
+		local SaveFile = InterfaceFileMgr:GetFullFileName(FileName, "solo")
+		
+		local SaveFileExists = InterfaceFileMgr:FileExist(FileName, "solo")
+		
+		if (SaveFileExists) then 
+			Playable = 1
+		end	
+
+		if (RightsMgr:IsMapAllowed(MapName) == false) then 
+			Playable = 0
+		end
+
+		local ScreenName = MapSaveMgr:getScreenFileName(MapSaveMgr.CurrentRegion, index)
+
+		local SmallScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName..".dds", "solo") 
+
+		if (SaveFileExists) then
+			--InterfaceUtilities:LOG_ERROR ("tracing for index:"..tostring(index))
+			--InterfaceUtilities:LOG_ERROR ("Filename = "..FileName)
+			if (MapSaveMgr.SaveNameTable[FileName] == nil) then
+				--InterfaceUtilities:LOG_ERROR ("table not initialized for "..FileName)
+				MapSaveMgr.SaveNameTable[FileName] = {}
+
+			end
+
+			Name = 			MapSaveMgr.SaveNameTable[FileName].CityName or "Name Not Found"
+			Pop = 			MapSaveMgr.SaveNameTable[FileName].Population or "0"
+			CashFlow = 		MapSaveMgr.SaveNameTable[FileName].CashFlow or "0"
+			Tourists = 		MapSaveMgr.SaveNameTable[FileName].Tourists or 	"0"
+
+			PopSat = 		math.floor(MapSaveMgr.SaveNameTable[FileName].PopSat or 	0)
+			Jobless = 		math.floor(MapSaveMgr.SaveNameTable[FileName].Jobless or 0)
+			
+			if InterfaceFileMgr:FileExist(ScreenName..".dds", "solo")  then 
+				Image = SmallScreenSaveFile
+			end
+
+		end
+
+		SCALEFORMMGR:DoActionScriptWithArg("REGIONSELECT","AddMap",tostring(index).."|"..Name.."|"..Desc.."|"..tostring(SaveFileExists).."|"..Pop.."|"..CashFlow.."|"..X.."|"..Y.."|"..Image.."|"..rot.."|"..PopSat.."|"..Jobless.."|"..Tourists.."|"..LevelName.."|"..Playable );
+
+    end
+	MapSaveMgr:SerializeSaveNameTable()
+
+end
+
+
+function MapSaveMgr:GetPlayable(RegionNb, MapNb) 
+	
+	local Playable = false 
+	local NewMapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(MapNb)][2]
+	
+	
+	if MapMgr.g_FullMapList[NewMapName] ~= nil and MapMgr.g_FullMapList[NewMapName].Playable ~= nil and MapMgr.g_FullMapList[NewMapName].Playable == true then 
+		 Playable = true 
+	else
+		InterfaceUtilities:LOG_CUSTOM1("insufficient data - false")
+		return false
+	end	
+	
+	for k,v in pairs (MapSaveMgr.LER) do
+		if (v == RegionNb) then 
+			local Flag = RightsMgr:IsLE()
+			if (Flag == true) then 
+				InterfaceUtilities:LOG_CUSTOM1("YES - Limited Edition region - which is available")
+				return true
+			else	
+				InterfaceUtilities:LOG_CUSTOM1("NO - Limited Edition region - which is unavailable")
+				return false
+			end	
+		end
+	end
+	
+	--if MapSaveMgr:IsLERA(RegionNb) then 
+	--	InterfaceUtilities:LOG_CUSTOM1("YES - Limited Edition region")
+	--	return true 
+	--end		
+		
+	InterfaceUtilities:LOG_CUSTOM1("Testing in rights manager")	
+	if (RightsMgr:IsMapAllowed(NewMapName)==true) then 
+		return true
+	end
+	
+	InterfaceUtilities:LOG_CUSTOM1("All tests have failed, map is not")	
+	return false
+	
+end
+
+function MapSaveMgr.GoToPreselectedMap() 
+ 
+	if (AutoActions.Region == nil) or (AutoActions.Map == nil) or (AutoActions.InGameStarted) then 
+		return 
+	end	
+ 
+ 	--LOG_ERROR("going to region "..AutoActions.Region.." map "..AutoActions.Map)
+	
+	MapSaveMgr.CurrentRegion = AutoActions.Region
+	MapSaveMgr:StartGame(AutoActions.Map)
+
+end
+
+
+function MapSaveMgr:StartGame(MapNb)
+
+	if (g_LoadingIsInProgress) then 
+		return 
+	end	
+	
+
+	MapSaveMgr.CurrentMap = MapNb
+
+	local NewMapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(MapSaveMgr.CurrentMap)][2]
+
+	--LOG_ERROR(NewMapName.." has been selected")
+	MapSaveMgr.CurrentMapPlayable = MapSaveMgr:GetPlayable(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+	
+	if (MapSaveMgr.CurrentMapPlayable) then 
+		INGAME.VisitMode = false
+		--LOG_ERROR("Visit mode OFF")
+	else
+		INGAME.VisitMode = true
+		--LOG_ERROR("Visit mode ON")		
+	end	
+
+	local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+
+	local SaveFile = InterfaceFileMgr:GetFullFileName(FileName, "solo") 
+
+	local NewFile = "Data\\Level\\"..NewMapName..".lvl"
+	
+	--local SaveFileExists = FileSystem:FileExist(SaveFile)
+	local SaveFileExists = InterfaceFileMgr:FileExist(FileName, "solo")
+	
+
+		
+	
+	if (SaveFileExists) then
+		--LOG_INFO("MapSaveMgr:StartGame 1: LOAD=(" .. SaveFile .."))")
+		
+		LocVarMgr:SetValue("CityName", MapSaveMgr:getCurrentCityName())
+			
+		INGAME.VisitMode = false
+		if (g_CityIsBeingPlayed) and (g_CityIsBeingPlayedIsSolo) and (g_CityIsBeingPlayedID == MapSaveMgr:getCurrentCityId()) then
+			InterfaceMgr:GotoScreen("INGAME")
+		else
+			g_CityIsBeingPlayed = true
+			g_CityIsBeingPlayedIsSolo = true
+			g_CityIsBeingPlayedID = MapSaveMgr:getCurrentCityId()
+			
+			Command:Post("SCENE", "LOAD:GAME:E_LOCAL_APPDATA", SaveFile)
+			
+			InterfaceMgr:GotoScreen("INGAME")
+		end	
+	else
+		--LOG_INFO("MapSaveMgr:StartGame 2: LOAD=(" .. SaveFile .."))")
+		g_CityIsBeingPlayed = true
+		g_CityIsBeingPlayedIsSolo = true
+		g_CityIsBeingPlayedID = MapSaveMgr:getCurrentCityId()
+	
+		Command:Post("SCENE", "LOAD:GAME:E_INSTALL", NewFile)
+		InterfaceMgr:GotoScreen("INGAME")
+	end
+	
+end
+
+function MapSaveMgr:StartNewCity(_NewCityName)
+
+	LocVarMgr:SetValue("CityName", _NewCityName)
+
+	LocVarMgr:SetValue("CITYNAME", _NewCityName)
+
+	--LOG_ERROR("Starting new city. Name = ".._NewCityName.." map number = "..MapSaveMgr.CurrentMap.." region = "..MapSaveMgr.CurrentRegion)
+	
+	local NewMapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(MapSaveMgr.CurrentMap)][2]
+	
+	MapSaveMgr:DefineCityName(_NewCityName)
+	MapSaveMgr:StartGame(MapSaveMgr.CurrentMap)
+	MapSaveMgr:SerializeSaveNameTable()
+	MapSaveMgr:DoSave()
+
+end
+
+function MapSaveMgr:getFileName(Region,Map)
+	local FileName ="SoloSaveRegion"..tostring(Region).."Map"..tostring(Map)..".sol"
+	return (FileName)
+end
+
+
+function MapSaveMgr:getScreenFileName(Region,Map)
+	local FileName ="SoloSaveRegion"..tostring(Region).."Map"..tostring(Map)
+	return (FileName)
+end
+
+
+function MapSaveMgr:TestScreenShotManipulation()
+
+		--FileSystem:CreateDirectory(MapSaveMgr.Directory)
+
+		local ScreenName = MapSaveMgr:getScreenFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+		local FullScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName.."_Full.dds", "solo")
+		local SmallScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName..".dds", "solo")
+
+		Command:Post( "SCREENSHOT", SmallScreenSaveFile, "400x256x90" )
+		
+		local Tab = {}
+		Tab["FileName"] = FullScreenSaveFile
+		Tab["SmallFileName"] = SmallScreenSaveFile	
+end
+
+
+function MapSaveMgr:CreateLevelScreenShot()
+		local MapName = MapSaveMgr.Regions["Region"..tostring(MapSaveMgr.CurrentRegion)]["Map"..tostring(MapSaveMgr.CurrentMap)][2]
+		local FullScreenSaveFile = "../AssetSource/Interface/Flash/TGATexture_src/Maps/"..MapName.."_Full.dds"
+		local SmallScreenSaveFile = "../AssetSource/Interface/Flash/TGATexture_src/Maps/"..MapName..".dds"
+
+		Command:Post( "LEVELSCREENSHOT", SmallScreenSaveFile, "400x256x90" )
+		
+		local Tab = {}
+		Tab["FileName"] = FullScreenSaveFile
+		Tab["SmallFileName"] = SmallScreenSaveFile 
+		Tab["Tries"]=0		
+end
+
+
+function MapSaveMgr:YesQuit(_Action)
+
+	if (TutorialStatesMgr.TutorialActive) then 
+		Main:RequestExitApp(0)
+		return 
+	end
+
+	MapSaveMgr.flagGotoPlanet = false
+	MapSaveMgr.flagQuit = true
+	MapSaveMgr:Save()
+end
+
+
+function MapSaveMgr:QuitMessageBox()
+
+	MESSAGEBOX:DoNewMessageBox(1, "&ReallyQuit", "&AreYouSureYouWantToQuit", "MapSaveMgr:YesQuit", "", "MESSAGEBOX:NoAction", "","&Yes", "No")
+end
+
+
+function MapSaveMgr:ClosePanel(Tab)
+	if (Tab.Screen ~= nil) then 
+		Interface:ClosePanel(Tab.Screen)
+	end	
+end
+
+function MapSaveMgr:Quit(Tab)
+		Main:RequestExitApp(0)
+end
+
+
+function MapSaveMgr:TaskSave(Tab)
+
+	local CurrentMapName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap)
+	local CityName = ""
+	
+	MapSaveMgr:SerializeSaveNameTable()
+	
+	if (TutorialStatesMgr.TutorialActive) then 
+		return 
+	end	
+	
+	if ((MapSaveMgr.SaveNameTable[CurrentMapName] ~= nil) and (MapSaveMgr.SaveNameTable[CurrentMapName].CityName~=nil)) then
+		CityName = MapSaveMgr.SaveNameTable[CurrentMapName].CityName
+		MESSAGEBOX:DoNewMessageBox(8 , "&Saving", "&SavingCity_Message_01" --[[..CityName ..")..."]], "", "", "", "")--"NETWORK:NoQuit", "QUIT", "NETWORK:NoQuit", "QUIT") --TODO_LOC
+	else
+		MESSAGEBOX:DoNewMessageBox(8, "&Saving", "&SavingCity_Message_02" ,"" , "", "", "") --TODO_LOC
+	end
+	
+	INGAME:SetVisibleWidget( "MESSAGEBOX", "MessageBox.yesButton", 0 ) -- Hide the yes button
+	local Tab2 = {}
+	Tab2.Screen = "MESSAGEBOX"
+	DelayedTasks:Addtask("MapSaveMgr:ClosePanel", Tab2, 6)
+
+	Command:Post("SCENE", "SAVE:GAME:E_LOCAL_APPDATA", Tab.SaveFile)
+	
+	MapSaveMgr.SaveTimeCounter = os.clock()
+	
+	
+			
+	if (Tab["Region"] == true) then 
+		local Tab2 = {}
+		Tab2.Screen = "REGION"
+		DelayedTasks:Addtask("DelayedTasks:GotoScreen", Tab2, 6)
+		return 
+	end
+			
+	if (Tab["Planet"] == true) then 
+		local Tab2 = {}
+		Tab2.Screen = "PLANET"
+
+		DelayedTasks:Addtask("DelayedTasks:GotoScreen", Tab2, 6)
+
+	end		
+	
+	if (Tab["Quit"] == true) then 
+
+		DelayedTasks:Addtask("MapSaveMgr:Quit", {}, 6)
+			
+
+	end
+end
+
+
+function MapSaveMgr:SaveThenQuit()
+	--LOG_ERROR("calling save then quit") 
+	MapSaveMgr:QuitMessageBox()
+end
+
+
+function MapSaveMgr:SaveThenPlanet()
+	--LOG_ERROR("calling save then planet") 
+	MapSaveMgr.flagGotoPlanet = true
+	MapSaveMgr.flagGotoRegion = false
+	MapSaveMgr.flagQuit = false
+	MapSaveMgr:Save()
+end
+
+
+function MapSaveMgr:SaveThenRegion()
+	--LOG_ERROR("calling save then planet") 
+	MapSaveMgr.flagGotoPlanet = false
+	MapSaveMgr.flagGotoRegion = true
+	MapSaveMgr.flagQuit = false
+	MapSaveMgr:Save()
+end
+
+
+function MapSaveMgr:Save()
+	if (INGAME.VisitMode) then 
+		return 
+	end	
+
+	if (InterfaceMgr.SoloMode) then
+
+		local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+		
+		if (FileName == nil) then 
+			FileName = "UnknownName"
+		end	
+		
+		if (MapSaveMgr.SaveNameTable[FileName] == nil) then
+			MapSaveMgr.SaveNameTable[FileName] = {};
+		end
+		
+		
+		local ScreenName = MapSaveMgr:getScreenFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+		
+		--FileSystem:CreateDirectory(MapSaveMgr.Directory)
+		
+		local SaveFile = InterfaceFileMgr:GetFullFileName(FileName, "solo") 
+		--local FullScreenSaveFile = MapSaveMgr.Directory.."/"..ScreenName.."_Full.dds"
+		--local SmallScreenSaveFile = MapSaveMgr.Directory.."/"..ScreenName..".dds"
+		local FullScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName.."_Full.dds", "solo")
+		local SmallScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName..".dds", "solo")
+		
+		if (TutorialStatesMgr.TutorialActive == false) then 
+			Command:Post( "SCREENSHOT", SmallScreenSaveFile, "400x256x90" )
+		end	
+		
+		
+		local Tab = {}
+		Tab["FileName"] = FullScreenSaveFile
+		Tab["SmallFileName"] = SmallScreenSaveFile 
+		Tab["Tries"]=0
+		--DelayedTasks:Addtask("MapSaveMgr:TreatScreenShot", Tab, 2)
+		
+		if not Sim:IsSimReady() then
+			--LOG_ERROR("Sim Globals not yet initialised")
+			return
+		end
+
+		FakeSimCalc:Update()
+		
+		MapSaveMgr.SaveNameTable[FileName].Population = FakeSim.TotalCitizenNb --Sim.CitizenAll.NbCitizen
+		MapSaveMgr.SaveNameTable[FileName].CashFlow = 	Sim.Money.CashFlow
+		MapSaveMgr.SaveNameTable[FileName].Cash = 		math.floor(Sim.Money.Cash)
+		MapSaveMgr.SaveNameTable[FileName].Tourists = 	Sim.TouristAll.NbTourist
+		MapSaveMgr.SaveNameTable[FileName].PopSat = 	Sim.CitizenAll.CitizenSatisfaction.Global
+		MapSaveMgr.SaveNameTable[FileName].Jobless = 	math.floor(Sim.CitizenAll.PercentJobless)
+		
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints = {}
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0] = {}
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].ProjectId = "0"
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].BpType = "BluePrint"
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens = {}
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1] = {}
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1].Needed = 2
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1].AlreadySent = 2
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1].AlreadySent = 2
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1].TimerTurn = 3
+		--MapSaveMgr.SaveNameTable[FileName].BluePrints[0].Tokens[1].TimerStep = 30
+		
+		TRADING:CheckGpProgress()
+		
+		if (TRADING.CityGp[FileName] ~= nil) then
+			MapSaveMgr.SaveNameTable[FileName].BluePrints = InterfaceUtilities:DeepCopyTable(TRADING.CityGp[FileName])
+		else
+			MapSaveMgr.SaveNameTable[FileName].BluePrints = {}
+		end
+		
+		MapSaveMgr:getCurrentCityTokens()
+		
+		MapSaveMgr.SaveNameTable[FileName].Tokens = InterfaceUtilities:DeepCopyTable(TradingLogic.CityTokens[FileName])
+		--[[
+		for idx = 1,  TradingLogic.MaxSoloTokens do
+		
+		
+			local Name = TradingLogic:GetTokenName(i)
+		
+			local val = 0
+			if (Name ~= nil) then 
+				prod = CitySaveCalculations:getNumberOfTokens(Name) or 0
+			end	
+			
+			
+			
+			--local prod = CitySaveCalculations:getNumberOfTokens(key)
+			
+			local import = MapSaveMgr:CalculateOfflineTradeImpact(Name) --MapSaveMgr.OmnicorpTokenCurrentImpacts[key].imported or 0
+			local export = 0 --MapSaveMgr.OmnicorpTokenCurrentImpacts[key].exported or 0
+		
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx] = {}
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iTokenId       = idx
+			
+			InterfaceUtilities:LOG_CUSTOM1("MapSaveMgr.SaveNameTable.Tokens["..idx.."] prod = "..(prod or "nil").." import "..(import or "nil"))
+			
+			
+			
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iProduction    = prod
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iContractsIn	 = import
+			
+			
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iContractsOut	 = 0
+	        MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iOffersOut	 = 0
+			MapSaveMgr.SaveNameTable[FileName].Tokens[idx].m_iToCity		 = 0
+		end ]]
+		
+		local Tab2 = {}
+		Tab2["SaveFile"] = SaveFile
+		
+		Tab2["Planet"] = MapSaveMgr.flagGotoPlanet
+		Tab2["Region"] = MapSaveMgr.flagGotoRegion
+		Tab2["Quit"] = MapSaveMgr.flagQuit
+		
+		DelayedTasks:Addtask("MapSaveMgr:TaskSave", Tab2, 6)	
+	else
+		--InterfaceUtilities:LOG_ERROR(" Not saving, not in solo mode")
+	end
+end
+
+
+function MapSaveMgr:DoSave()
+
+	if (InterfaceMgr.SoloMode) and (TutorialStatesMgr.TutorialActive == false) then
+	
+		MapSaveMgr.flagGotoPlanet = false
+		MapSaveMgr.flagQuit = false
+		MapSaveMgr.flagGotoRegion = false
+
+		local diff_time = 5000;
+
+		if (MapSaveMgr.SaveTimeCounter == nil) then
+			MapSaveMgr.SaveTimeCounter = 0
+		else
+			diff_time = os.clock() - MapSaveMgr.SaveTimeCounter
+		end
+
+		if (diff_time < 600) then
+
+			return
+		end
+
+		MapSaveMgr:Save()
+
+	else
+		--InterfaceUtilities:LOG_ERROR(" Not saving, not in solo mode")
+	end
+
+end
+
+
+function MapSaveMgr:DefineCityFullName(Region, Map, _NewCityName)
+
+	local CurrentMapName = MapSaveMgr:getFileName(Region,Map)
+
+	if (MapSaveMgr.SaveNameTable== nil) then
+		MapSaveMgr.SaveNameTable= {}
+	end
+
+	if (MapSaveMgr:GetPlayable(Region, Map) == false) then
+		LOG_INFO("Map not playable !")
+		return 
+	end	
+	--LOG_ERROR("City name is ".._NewCityName)
+
+	if MapSaveMgr.SaveNameTable[CurrentMapName] == nil then
+		MapSaveMgr.SaveNameTable[CurrentMapName] = {}
+		MapSaveMgr.SaveNameTable[CurrentMapName].CityName = _NewCityName
+		MapSaveMgr.SaveNameTable[CurrentMapName].Population = 0
+		MapSaveMgr.SaveNameTable[CurrentMapName].CashFlow = 0
+		MapSaveMgr.SaveNameTable[CurrentMapName].Tourists = 0
+		MapSaveMgr.SaveNameTable[CurrentMapName].PopSat = 	0
+		MapSaveMgr.SaveNameTable[CurrentMapName].Jobless = 0
+		MapSaveMgr.SaveNameTable[CurrentMapName].Tokens = {}
+		
+		--for idx = 1,  TradingLogic.MaxSoloTokens do
+	     --   MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx] = {}
+	      --  MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iTokenId       = idx
+	       -- MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iProduction    = 0
+	       -- MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iContractsIn	 = 0
+	       -- MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iContractsOut	 = 0
+	       -- MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iOffersOut	 = 0
+		--	MapSaveMgr.SaveNameTable[CurrentMapName].Tokens[idx].m_iToCity		 = 0
+		--end
+		
+		MapSaveMgr.SaveNameTable[CurrentMapName].Region = Region
+		MapSaveMgr.SaveNameTable[CurrentMapName].Map = Map
+		
+		LOG_INFO("New city recorded at key " .. CurrentMapName)
+		
+	else
+		LOG_INFO("Map name already exists !!")
+		MapSaveMgr.SaveNameTable[CurrentMapName].CityName = _NewCityName
+	end
+
+end
+
+
+function MapSaveMgr:DefineCityName(_NewCityName)
+	MapSaveMgr:DefineCityFullName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap, _NewCityName)
+end
+
+
+function MapSaveMgr:Entry (b)
+
+end
+
+
+function MapSaveMgr:CalculateStatsByRegion()
+	MapSaveMgr:LoadCityNames()
+	for i = 1,6 do 
+		MapSaveMgr.RegionStats[""..i..""] = 
+								{
+								NbCities = 0,
+								Population = 0
+								}
+	end							
+	
+	for k,v in pairs (MapSaveMgr.SaveNameTable) do 
+		local Region = v.Region or 0
+		local Pop = v.Population or 0
+
+		if (MapSaveMgr.RegionStats[tostring(Region)]) then
+			MapSaveMgr.RegionStats[tostring(Region)].NbCities = MapSaveMgr.RegionStats[tostring(Region)].NbCities+1
+			MapSaveMgr.RegionStats[tostring(Region)].Population = MapSaveMgr.RegionStats[tostring(Region)].Population+Pop
+		end
+		
+		--InterfaceUtilities:LOG_INFO("Nb cities in region "..Region.." is now "..MapSaveMgr.RegionStats[Region].NbCities.." Total Pop is "..MapSaveMgr.RegionStats[Region].Population)
+	end	
+
+end
+
+
+function MapSaveMgr:Serialize(o,file)
+
+	InterfaceUtilities:Serialize(o,file)
+end
+
+
+function MapSaveMgr:SerializeSaveNameTable()
+
+	--FileSystem:CreateDirectoryEx(MapSaveMgr.Directory, tonumber(netapi.E_LOCAL_APPDATA))
+
+	InterfaceFileMgr:SaveTableAsCXLFile("Cities.cxl", "MapSaveMgr.SaveNameTable", "solo")
+	
+	InterfaceFileMgr:SaveTableAsCXLFile("Contracts.cxl", "MapSaveMgr.ContractsTable", "solo")
+	
+	InterfaceFileMgr:SaveTableAsCXLFile("ContractList.cxl", "MapSaveMgr.ContractList", "solo")	
+	
+	
+	--[[
+	
+	
+	
+	local f = InterfaceFileMgr:Open(MapSaveMgr.SaveFileName, "solo")
+
+	--local f = FileSystem:FileOpen(MapSaveMgr.SaveFilePath, "w", tonumber(netapi.E_LOCAL_APPDATA))
+	
+	if (not f) then 
+		LOG_ERROR("Unable to open "..MapSaveMgr.SaveFilePath.." for writing")
+		return
+	end
+
+	--f:write("MapSaveMgr.SaveNameTable =")
+	FileSystem:FileWrite(f, "MapSaveMgr.SaveNameTable =")
+	
+	--InterfaceUtilities:Serialize(MapSaveMgr.SaveNameTable, f)
+	InterfaceUtilities:Serialize_new(MapSaveMgr.SaveNameTable, f)
+	
+	--f:write("MapSaveMgr.ContractsTable =")
+	FileSystem:FileWrite(f, "MapSaveMgr.ContractsTable =")
+	
+	--InterfaceUtilities:Serialize(MapSaveMgr.ContractsTable, f)
+	InterfaceFileMgr:Serialize(MapSaveMgr.ContractsTable, f)
+	
+	
+	--f:write("MapSaveMgr.ContractsTable =")
+	FileSystem:FileWrite(f, "MapSaveMgr.ContractList =")
+	
+	--InterfaceUtilities:Serialize(MapSaveMgr.ContractsTable, f)
+	InterfaceFileMgr:Serialize(MapSaveMgr.ContractList, f)
+	
+
+	--f:close()
+	FileSystem:FileClose(f)
+	]]
+	
+end
+
+function MapSaveMgr:LoadCityNames()
+    --LOG_INFO("Loading city names")
+	 
+	InterfaceFileMgr:LoadCXLFile("Contracts.cxl", "solo")
+	InterfaceFileMgr:LoadCXLFile("ContractList.cxl", "solo")
+	
+	if (InterfaceFileMgr:LoadCXLFile("Cities.cxl", "solo") == false) then 
+		
+	if (InterfaceFileMgr:FileExist(MapSaveMgr.SaveFileName, "solo")) then
+		LOG_INFO("MapSaveMgr.SaveFileName exists, so executing")
+			InterfaceFileMgr:DoFile(MapSaveMgr.SaveFileName, "solo", "MapSaveMgr.SaveNameTable")
+	else
+		MapSaveMgr.SaveNameTable ={}
+		MapSaveMgr:SerializeSaveNameTable()
+	end
+
+	if (MapSaveMgr.SaveNameTable== nil) then
+		LOG_ERROR("MapSaveMgr.SaveNameTable still nill !")
+		MapSaveMgr.SaveNameTable ={}
+		MapSaveMgr:SerializeSaveNameTable()
+	end
+
+	if (MapSaveMgr.SaveNameTable[MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap)]== nil) then
+		LOG_ERROR("MapSaveMgr.SaveNameTable["..MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap ).."still nill !")
+	end
+end
+end
+
+
+function MapSaveMgr:NoDeleteSolo()
+
+	SCALEFORMMGR:DoActionScript("REGIONSELECT","PutBackHitTestOnAllMaps");
+
+end
+
+
+function MapSaveMgr:YesDeleteSolo(MapNb)
+
+	local strFileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, tonumber(MapNb))
+	local strFileNameWithoutExt = string.sub(strFileName, 1, -5)
+	local strFilePath = InterfaceFileMgr:GetFullFileName(strFileNameWithoutExt, MapSaveMgr.Directory)
+
+	--LOG_INFO("Deleting " .. strFilePath ..".bak")
+	FileSystem:RemoveFile(strFilePath..".bak", tonumber(netapi.E_LOCAL_APPDATA))
+	
+	--LOG_INFO("Renaming " .. strFilePath .. ".sol to " .. strFilePath ..".bak")
+	FileSystem:CopyFileEx(strFilePath .. ".bak", tonumber(netapi.E_LOCAL_APPDATA), strFilePath..".sol", tonumber(netapi.E_LOCAL_APPDATA))
+	FileSystem:RemoveFile(strFilePath .. ".sol", tonumber(netapi.E_LOCAL_APPDATA))
+	
+	for k,v in pairs(MapSaveMgr.IconIds)
+	do
+		if v.Name == strFileNameWithoutExt
+		then
+			PlanetMgr:DestroyIcon(k)
+		end
+	end
+	
+	--LOG_INFO("Region " .. MapSaveMgr.CurrentRegion .. " Map " .. MapNb)
+	
+	for RegionNb, Table in pairs (SoloSlotList) do 
+	
+		if (MapSaveMgr:IsLERA(RegionNb) == true) then 
+
+			for index, Tab in ipairs (Table )
+			do
+			
+				--LOG_INFO("Checking with Region " .. RegionNb .. " Map " .. index)
+				
+				if (tonumber(RegionNb) == tonumber(MapSaveMgr.CurrentRegion) and tonumber(index) == tonumber(MapNb))
+				then
+		
+					--LOG_INFO("Creating an empty slot in place")
+					local IconId = PlanetMgr:CreateIcon("CitySlotEmpty", Tab[1], Tab[2], Tab[3])
+					
+					MapSaveMgr.IconIds [IconId] = {}
+					MapSaveMgr.IconIds [IconId].Name = "SoloSaveRegion"..RegionNb.."Map"..tostring(index)
+					MapSaveMgr.IconIds [IconId].Region =  "Region"..RegionNb
+					MapSaveMgr.IconIds [IconId].Map =  index
+					MapSaveMgr.IconIds [IconId].RegionNb = RegionNb
+					
+					PlanetMgr:SetIconSize(IconId, 100)
+					
+				end
+
+			end
+
+		end
+
+	end
+
+	MapSaveMgr.SaveNameTable[strFileName] = nil
+	
+	--LOG_INFO("Deleting from fn.dat the city " .. strFileName)
+	MapSaveMgr:RemoveOmnicorpContracts(strFileName)
+	
+	MapSaveMgr:SerializeSaveNameTable()
+	
+end
+
+
+
+
+--[[//////////////////////////////////////////////////////////////////////////////////////////////
+
+FALLBACK TRADING LOGIC TO BE ABLE TO TEST WHILE THE NETWORK SERVICE IS SPOTTY 
+
+//////////////////////////////////////////////////////////////////////////////////////////////]]
+
+function MapSaveMgr:CreateOmnicorpContracts(MyCityID, _Exchange, _EndDate)	-- now the fun starts
+
+	
+	local _table = {}
+	
+	_table.m_iSourceCityId = MyCityID
+	
+	if (MyCityID == nil) then 
+		LOG_ERROR("MyCityID is nil, cannot do Omnicorp solo contract")
+		return 
+	end
+	_table.m_ExchangeList = _Exchange
+	_table.m_EndDate = _EndDate
+		
+	table.insert( MapSaveMgr.ContractsTable, _table) 
+	
+	MapSaveMgr:SerializeSaveNameTable()
+	
+	MapSaveMgr:ResolveContracts() -- needs to include impacts - does it ? 
+	
+end
+
+function MapSaveMgr:RemoveOmnicorpContracts(MyCityID)
+
+	for k,_table in ipairs (MapSaveMgr.ContractsTable) do 
+	
+		if (_table.m_iSourceCityId == MyCityID) then 
+			table.remove (MapSaveMgr.ContractsTable, k)
+			MapSaveMgr:RemoveOmnicorpContracts(MyCityID)
+			return
+		end
+	end
+
+end
+
+
+function MapSaveMgr:CreateContracts(MyCityID, HisCityID, _Exchange, _EndDate)	-- now the fun starts
+
+	if (true) then 
+		return 
+	end
+	
+	local _table = {}
+	
+	_table.m_iSourceCityId = MyCityID
+	
+	if (MyCityID == nil) then 
+		LOG_ERROR("MyCityID is nil")
+	end
+	
+	if (HisCityID == nil) then 
+		LOG_ERROR("MyCityID is nil")
+	end
+	
+	_table.m_iDestCityId = HisCityID
+	
+	_table.m_ExchangeList = _Exchange
+	
+	_table.m_iState = TradingLogic:ContractState("UNDEFINED")
+	
+	_table.m_CreationDate = _EndDate
+	_table.m_EndDate = _EndDate
+		
+	table.insert( MapSaveMgr.ContractsTable, _table) 
+	
+	MapSaveMgr:SerializeSaveNameTable()
+	MapSaveMgr:ResolveContracts()
+end
+
+MapSaveMgr.OmnicorpTokenCurrentImpacts = {}
+
+function MapSaveMgr:GetNbContracts()
+
+	local Nb = 0
+	for k,_table in ipairs (MapSaveMgr.ContractsTable) do 
+	
+		if (_table.m_iSourceCityId == MapSaveMgr:getCurrentCityId()) then 
+			Nb = Nb +1 
+		end
+	end
+	
+	return Nb 
+
+end
+
+function MapSaveMgr:ResolveOmniContractsForCurrentCity()
+
+	MapSaveMgr.OmnicorpTokenCurrentImpacts ={}
+
+	for tokenID = 1,TradingLogic.MaxSoloTokens do 
+		local key = TradingLogic:GetTokenName(tokenID) 
+		MapSaveMgr.OmnicorpTokenCurrentImpacts[key] =  {}
+		MapSaveMgr.OmnicorpTokenCurrentImpacts[key].id = tokenID
+		MapSaveMgr.OmnicorpTokenCurrentImpacts[key].production = CitySaveCalculations:getNumberOfTokens(key)
+		MapSaveMgr.OmnicorpTokenCurrentImpacts[key].imported =  0
+		MapSaveMgr.OmnicorpTokenCurrentImpacts[key].exported =  0
+	end
+		
+		
+
+	for k,_table in ipairs (MapSaveMgr.ContractsTable) do 
+	
+		if (_table.m_iSourceCityId == MapSaveMgr:getCurrentCityId()) then 
+		
+			local nowDate = DateUtilities:GetNowDate() 
+			
+			--ShowTableElementInNotepad(firstDateTab,"firstDateTab")
+			
+			local contractDate = DateUtilities:ReadDateFromGameString(_table.m_EndDate) 
+			
+			--ShowTableElementInNotepad(contractDate,"contractDate")
+		
+			if (DateUtilities:IsFirstBeforeSecond(contractDate, nowDate)) then 
+				--LOG_ERROR("Current contract is out of date, removing") 
+				local Tab = {}
+				Tab.contract = {}
+				Tab.now = {}
+				
+				for k,v in pairs (contractDate) do 
+					Tab.contract[k] = v
+				end
+				
+				for k,v in pairs (nowDate) do 
+					Tab.now[k] = v
+				end
+				
+				--ShowTableElementInNotepad(Tab, "Tab")
+				
+				MapSaveMgr.ContractsTable[k] = nil
+				
+			else			
+				for tokenID, summary in pairs(_table.m_ExchangeList) do 
+					
+					summary = tonumber(summary)
+					
+					local key = TradingLogic:GetTokenName(tokenID) 
+					
+					--LOG_ERROR(" for "..key.." ( tokenID = "..(tokenID or "nil")..") impact = "..summary) 
+					
+					if (key ~= "Pb") then 
+						
+						MapSaveMgr.OmnicorpTokenCurrentImpacts[key] = MapSaveMgr.OmnicorpTokenCurrentImpacts[tokenID] or {}
+						MapSaveMgr.OmnicorpTokenCurrentImpacts[key].production = CitySaveCalculations:getNumberOfTokens(key)
+						
+						if (summary < 0) then 
+							MapSaveMgr.OmnicorpTokenCurrentImpacts[key].imported =  -1*summary
+							MapSaveMgr.OmnicorpTokenCurrentImpacts[key].exported =  0
+						else	
+							MapSaveMgr.OmnicorpTokenCurrentImpacts[key].imported =  0
+							MapSaveMgr.OmnicorpTokenCurrentImpacts[key].exported =  summary
+						end	
+					end	
+				end
+			end	
+		end
+	end
+	
+	TradingLogic:PushTokenStatusToCurrentCity(MapSaveMgr.OmnicorpTokenCurrentImpacts) 
+
+end
+
+function MapSaveMgr:ResolveContracts()	-- now the fun starts
+
+	-- set all the contract states to undefined and all the import and export to 0
+	if (true) then 
+		MapSaveMgr:ResolveOmniContractsForCurrentCity()
+		return 
+	end
+	
+	for _CityID,_CityTable in pairs (MapSaveMgr.SaveNameTable) do 
+
+		for _tokenID, _TokenTable in pairs (MapSaveMgr.SaveNameTable[_CityID].Tokens) do 
+			MapSaveMgr.SaveNameTable[_CityID].Tokens[_tokenID].m_iContractsIn = 0
+			MapSaveMgr.SaveNameTable[_CityID].Tokens[_tokenID].m_iContractsOut = 0
+		end
+	end	
+	
+	for k,v in pairs (MapSaveMgr.ContractsTable) do 
+		MapSaveMgr.ContractsTable[k].m_iState = TradingLogic:ContractState("UNDEFINED")
+	end
+	
+	local _newContractFound = true
+	
+	while (_newContractFound) do 
+	
+		_newContractFound = false
+	
+		for k,v in ipairs (MapSaveMgr.ContractsTable) do 
+		
+			if (v.m_iState == TradingLogic:ContractState("UNDEFINED")) then 
+			
+				local _contractPossible = true 
+
+				-- check that the contract is possible 	
+				for _id, _table in pairs (v.m_ExchangeList) do 
+				
+					local tokID = _table.m_iTokenId 
+					local Amount = _table.m_iAmount 
+					local Provider = _table.m_iSourceCityId 
+					
+					if (MapSaveMgr:GetAvailableTokens(Provider, tokID) < Amount) then 
+						_contractPossible = false
+					end	
+					
+				end
+				
+				-- if so, apply it 
+				if (_contractPossible) then 
+					
+					--LOG_ERROR("Contract is possible") 
+					
+					for _id, _table in pairs (v.m_ExchangeList) do 
+					
+						local tokID = _table.m_iTokenId 
+						
+						local Amount = _table.m_iAmount 
+						local Exporter = _table.m_iSourceCityId 
+						local Importer = _table.m_iDestCityId 
+						
+						if (Exporter == nil) then 
+							LOG_ERROR("Exporter is nill")
+						end
+						
+						if (Importer == nil) then 
+							LOG_ERROR("Importer is nill")
+						end
+						
+						if (MapSaveMgr.SaveNameTable[Importer] == nil) then 
+							LOG_ERROR("MapSaveMgr.SaveNameTable["..Importer.."].Tokens is nill")
+						end
+						
+						
+						MapSaveMgr.SaveNameTable[Importer].Tokens[tokID].m_iContractsIn = (MapSaveMgr.SaveNameTable[Importer].Tokens[tokID].m_iContractsIn or 0) + Amount 
+						MapSaveMgr.SaveNameTable[Exporter].Tokens[tokID].m_iContractsOut = (MapSaveMgr.SaveNameTable[Exporter].Tokens[tokID].m_iContractsOut or 0) + Amount
+		
+					end
+					
+					MapSaveMgr.ContractsTable[k].m_iState = TradingLogic:ContractState("ACTIVE")
+					--LOG_ERROR("Setting contract "..k.." is now valid ("..TradingLogic:ContractState("ACTIVE")..") insead of undef ("..TradingLogic:ContractState("UNDEFINED")..")")
+					_newContractFound = true 
+				end	
+			
+			end
+		end
+	end
+	
+	for k,v in pairs (MapSaveMgr.ContractsTable) do 
+		if (v.m_iState == TradingLogic:ContractState("UNDEFINED")) then 
+			--LOG_ERROR("Contract "..k.." is now Alerted")
+			MapSaveMgr.ContractsTable[k].m_iState = TradingLogic:ContractState("ALERTED")
+		else
+			--LOG_ERROR("Contract "..k.." is now Active ("..MapSaveMgr.ContractsTable[k].m_iState..")")
+		end
+	end
+	
+	MapSaveMgr:SerializeSaveNameTable()
+
+end
+
+function MapSaveMgr:GetAvailableTokens(_cityID, _tokenNB)
+
+	if (MapSaveMgr.SaveNameTable[_cityID] == nil) then
+		LOG_ERROR("No available tokens for ".._cityID.." because no entry in SaveNameTable") 
+		return 0
+	end	
+    
+	if (MapSaveMgr.SaveNameTable[_cityID].Tokens[_tokenNB] == nil) then
+		LOG_ERROR("No available tokens for ".._cityID.." on token ".._tokenNB.." because that entry is nil")
+		return 0
+	end	
+	
+	local prod =   MapSaveMgr.SaveNameTable[_cityID].Tokens[_tokenNB].m_iProduction
+	local import = MapSaveMgr.SaveNameTable[_cityID].Tokens[_tokenNB].m_iContractsIn or 0
+	local export = MapSaveMgr.SaveNameTable[_cityID].Tokens[_tokenNB].m_iContractsOut or 0
+	
+	local Available = prod + import - export
+
+	return (Available)
+end
+
+
+function MapSaveMgr:TokenSearch(_tokentable, _city, _player)
+
+	local resultTable = {}
+	
+	for k,v in pairs(MapSaveMgr.SaveNameTable) do 
+	
+		local _cityfits = true
+		
+		for k2,v2 in pairs(_tokentable) do 
+			if (MapSaveMgr:GetAvailableTokens(k, k2) < v2) then 
+					_cityfits = false
+				end
+			end
+		
+		if (_cityfits == true) then 
+			LOG_ERROR("We found a fit, in "..k)
+			resultTable[k] = {}
+			resultTable[k].CityID = k
+			resultTable[k].CityName = v.CityName
+			resultTable[k].PlayerName = "Solo"
+			--resultTable[k].Tokens = {}
+			for k2,v2 in pairs (v.Tokens) do
+				resultTable[k][TradingLogic:GetTokenName(k2)] = MapSaveMgr:GetAvailableTokens(k, k2)
+			end
+		end
+			
+	end
+	
+	return resultTable
+
+end
+
+
+function MapSaveMgr:getCurrentCityId()
+	return MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap)
+end
+
+
+function MapSaveMgr:getCurrentCityName()
+
+	if (TutorialStatesMgr.TutorialActive) then
+		return TutorialStatesMgr.TutorialChapter 
+	end
+
+	local fn =  MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion,MapSaveMgr.CurrentMap)
+	if (MapSaveMgr.SaveNameTable and MapSaveMgr.SaveNameTable[fn] and MapSaveMgr.SaveNameTable[fn].CityName) then
+		return (MapSaveMgr.SaveNameTable[fn].CityName)
+	else
+		LOG_ERROR("Unable to get city name due to nil arrays !")
+		return "UnknownCityName"
+	end
+end
+
+
+function MapSaveMgr:getCityName(_Id)
+
+	if (TutorialStatesMgr.TutorialActive) then
+		return TutorialStatesMgr.TutorialChapter 
+	end
+	
+	if (MapSaveMgr.SaveNameTable[_Id] ~= nil) then 
+		return (MapSaveMgr.SaveNameTable[_Id].CityName)
+	else
+		LOG_ERROR("Unable to get name of the city whose id is " .. _Id .. " due to nil arrays !")
+		return "UnknownCityName"
+	end
+end	
+
+
+function MapSaveMgr:GetTokensTrade(fn, tokenID) 
+
+	local import = 0
+	local export = 0
+	
+	for k,v in pairs (MapSaveMgr.ContractsTable) do 
+	
+		if (v.m_iSourceCityId==fn) then 
+			local iContractId = k
+
+			if (v.m_ExchangeList[tokenID] ~= nil) then 
+				if (v.m_ExchangeList[tokenID]  > 0) then 
+					export = export + v.m_ExchangeList[tokenID]
+				else	
+					import = import - v.m_ExchangeList[tokenID]
+				
+				end
+			end
+		end
+	
+	end
+	
+	return import, export 
+
+
+end
+
+
+function MapSaveMgr:getCityTokens(fn)
+
+	return MapSaveMgr:getCurrentCityTokens()
+	--[[
+
+	local _table = {}
+	
+	if (MapSaveMgr.SaveNameTable[fn] == nil) then 
+		
+		return _table
+	end
+	_table[fn] = {}
+	_table[fn].Tokens = {}
+	
+	local _tempTable = {}
+	
+	for idx = 1, TradingLogic.MaxSoloTokens do
+        _table[fn].Tokens[idx] = {}
+        _table[fn].Tokens[idx].m_iTokenId       = idx
+        _table[fn].Tokens[idx].m_iProduction    = MapSaveMgr.SaveNameTable[fn].Tokens[idx].m_iProduction
+        _table[fn].Tokens[idx].m_iContractsIn	 = MapSaveMgr.SaveNameTable[fn].Tokens[idx].m_iContractsIn
+        _table[fn].Tokens[idx].m_iContractsOut	 = MapSaveMgr.SaveNameTable[fn].Tokens[idx].m_iContractsOut
+        _table[fn].Tokens[idx].m_iOffersOut	 = 0
+        _table[fn].Tokens[idx].m_iToCity		 = 0
+    end
+	
+	return _table]]
+end
+
+
+function MapSaveMgr:getCityOffers(fn)
+
+	local _table = {}
+	
+	if (MapSaveMgr.SaveNameTable[fn] == nil) then 
+		
+		return _table
+	end
+	
+	_table[fn] = {}
+
+	-- offers are always accepted in solo mode 
+	return _table
+
+end
+
+
+function MapSaveMgr:getSummaryImpact(tokenID)
+
+
+
+	local strCityId = MapSaveMgr:getCurrentCityId()
+	
+	if (MapSaveMgr.ContractList[strCityId] == nil) then 
+		--LOG_INFO("Offline city "..(strCityId or "nil").." has no contracts, returning 0")
+		return 0
+	end
+	
+	local TokenName = "None"
+	
+	if (type(tokenID) == "string") then 
+		if (tonumber(tokenID) ~= nil) then 
+			tokenID = tonumber(tokenID)
+		else
+			tokenName = tokenID
+		end
+	end	
+		
+	
+	if (type(tokenID) == "number") then 
+		tokenName = TradingLogic:GetTokenName(tokenID) 
+	end
+	
+	if (tokenName ~= "cash") then 
+	
+		if (MapSaveMgr.ContractList[strCityId][tokenName] == nil) then 
+			return 0
+		end
+		
+		local Trade = 0
+		
+		for k,v in pairs (MapSaveMgr.ContractList[strCityId][tokenName]) do 
+			if (v.IsSell) then 
+				Trade = Trade - v.Amount
+			else
+				Trade = Trade + v.Amount
+			end
+		end
+		
+		return Trade
+	else
+	
+		local Trade = 0
+		
+		for tokenID, ContractsList in pairs (MapSaveMgr.ContractList[strCityId]) do 
+			for k,v in pairs (ContractsList) do 
+				if (v.IsSell) then 
+					Trade = Trade + math.abs(v.Cash)
+				else
+					Trade = Trade - math.abs(v.Cash)
+				end
+			end
+		end
+		
+		return Trade
+	end
+		
+
+end
+
+
+
+function MapSaveMgr:getCityContracts(fn)
+
+	local _table = {}
+	
+	if (MapSaveMgr.SaveNameTable[fn] == nil) then 
+		LOG_ERROR("no save found for "..fn) 
+		return _table
+	end
+
+	_table[fn] = {}
+	
+	for k,v in pairs (MapSaveMgr.ContractsTable) do 
+	
+		if (v.m_iDestCityId == fn) or (v.m_iSourceCityId==fn) then 
+			local iContractId = k
+            _table[fn][iContractId] = {}
+            _table[fn][iContractId].m_iId           = k
+            _table[fn][iContractId].m_iSourceCityId = v.m_iSourceCityId
+            _table[fn][iContractId].m_iDestCityId   = v.m_iDestCityId
+            _table[fn][iContractId].m_iState        = v.m_iState
+            _table[fn][iContractId].m_CreationDate  = v.m_CreationDate
+            _table[fn][iContractId].m_EndDate       = v.m_EndDate
+            _table[fn][iContractId].m_iOfferId      = v.m_iOfferId
+
+            _table[fn][iContractId].m_ExchangeList = InterfaceUtilities:DeepCopyTable(v.m_ExchangeList) 
+		end
+	
+	end
+
+	-- offers are always accepted in solo mode 
+	return _table
+end
+
+function  MapSaveMgr:InitSlots()
+	
+	MapSaveMgr:LoadCityNames()
+
+	PlanetMgr:ClearAllIcons()
+	
+	for RegionNb, Table in pairs (SoloSlotList) do 
+	
+		if (MapSaveMgr:IsLERA(RegionNb) == true) then 
+
+			for index, Tab in ipairs (Table ) do
+			
+				if (MapSaveMgr:GetPlayable(RegionNb, index)) then 
+					--local MapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(index)][2]
+				
+					local Name = "SoloSaveRegion"..RegionNb.."Map"..tostring(index)
+					
+					local IconId 
+
+					if (MapSaveMgr.SaveNameTable[Name..".sol"] ~= nil) then 
+						--LOG_INFO("Creating an online city slot for map "..Name)
+						IconId = PlanetMgr:CreateIcon("CityOnline", Tab[1], Tab[2], Tab[3])
+					else
+						--LOG_INFO("Creating an empty slot for map "..Name)
+						IconId = PlanetMgr:CreateIcon("CitySlotEmpty", Tab[1], Tab[2], Tab[3])
+					end
+					
+					MapSaveMgr.IconIds [IconId] = {}
+					MapSaveMgr.IconIds [IconId].Name = "SoloSaveRegion"..RegionNb.."Map"..tostring(index)
+					MapSaveMgr.IconIds [IconId].Region =  "Region"..RegionNb
+					MapSaveMgr.IconIds [IconId].Map =  index
+					MapSaveMgr.IconIds [IconId].RegionNb = RegionNb
+					
+					PlanetMgr:SetIconSize( IconId, 100)
+				end
+			end
+		end
+	
+	
+	--
+	end
+	
+	
+	PlanetMgr:SetOnRollOver("MapSaveMgr_OnIconRollOver")
+ 	PlanetMgr:SetOnRollOut("MapSaveMgr_OnIconRollOut")
+ 	PlanetMgr:SetOnClickDown("MapSaveMgr_OnIconPress")
+	PlanetMgr:SetOnClickUp("MapSaveMgr_OnIconRelease")
+end
+
+function MapSaveMgr_OnIconRollOver (_IconId)
+
+	if (InterfaceMgr.CurrentScreen ~= "REGIONSELECT") then
+		return
+	end
+	
+	if _IconId == nil then
+		LOG_INFO("MapSaveMgr_OnIconRollOver: _IconId is nil !")
+		return
+	end
+	
+	local Region = MapSaveMgr.IconIds [_IconId].Region
+	local RegionNb = MapSaveMgr.IconIds [_IconId].RegionNb
+	
+	if (MapSaveMgr:IsLERA(RegionNb) == false) then 
+		return 
+	end
+	
+	local Map = MapSaveMgr.IconIds [_IconId].Map
+	
+	MapSaveMgr:SetCurrentRegion(RegionNb)
+	MapSaveMgr:SetCurrentMap(Map)
+	
+	local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+	local SaveFile = InterfaceFileMgr:GetFullFileName(FileName, "solo") 
+	--local NewFile = "Data\\Level\\"..NewMapName..".lvl"
+	
+	--LOG_INFO("SaveFile " .. tostring(SaveFile))
+	
+	--local SaveFileExists = FileSystem:FileExist(SaveFile)
+	local SaveFileExists = InterfaceFileMgr:FileExist(FileName, "solo")
+	
+	--MapSaveMgr:RollOverMap(_IconId)
+	
+	if (SaveFileExists) then
+	
+		local strCityId = MapSaveMgr:getCurrentCityId()
+		
+		local aSourceCityInfos = MapSaveMgr.SaveNameTable[strCityId]
+		
+		if (aSourceCityInfos) then
+
+			LocVar.CITYNAME = aSourceCityInfos["CityName"]
+			LocVar.POPNUMBER = aSourceCityInfos["Population"]
+			LocVar.PLAYERNAME = g_strNickName
+	
+			Interface:DoActionScriptWithArg("REGIONSELECT", "setToolTip", "&SoloCityInfo")
+
+		end
+
+	else
+	
+		local MapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][2]
+		
+		--LocVar.DESC = PLANET:GetMapResources(MapName)
+		LocVar.DESC = Localization:GetText(MapName.."_Desc")
+		LocVar.MAP = Localization:GetText(MapName)
+	
+		Interface:DoActionScriptWithArg("REGIONSELECT", "setToolTip", "&SoloSlotInfo")
+	
+	end
+	
+	--[[if (MapSaveMgr.SaveNameTable[Name..".sol"] == nil) then 
+		LOG_INFO("MapSaveMgr.SaveNameTable["..Name..".sol] is nil !")
+		
+	else
+		local CityName = MapSaveMgr.SaveNameTable[Name..".sol"].CityName
+		local Pop = MapSaveMgr.SaveNameTable[Name..".sol"].Population
+		
+		local ToolTip = CityName.." (Pop. "..Pop..")"
+		
+		SCALEFORMMGR:DoActionScriptWithArg("REGIONSELECT", "setToolTip", ToolTip)
+	end]]	
+	
+	--[[
+	if (CitySlotMap[_IconId] ~= nil) then
+		local SlotId = CitySlotMap[_IconId].m_SlotId
+
+		if CityFullDesc[SlotId] ~= nil then	-- if this is a city
+			MapSaveMgr:DisplayToolTipInfoCity(SlotId)
+		else
+			MapSaveMgr:DisplayToolTipInfoEmptySlot(_IconId)
+		end
+	else
+		LOG_INFO("CitySlopMap of " .. _IconId .. " is nil")
+	end]]
+
+end
+
+function MapSaveMgr:RollOverMap(_IconId) 
+
+
+	--[[local Region = MapSaveMgr.IconIds [_IconId].Region
+	
+	
+	local RegionNb = MapSaveMgr.IconIds [_IconId].RegionNb
+	
+	if (MapSaveMgr:IsLERA(RegionNb) == false) then 
+		return 
+	end
+	
+	local Map = MapSaveMgr.IconIds [_IconId].Map
+	local FileName = MapSaveMgr.IconIds [_IconId].Name
+
+	LOG_INFO("Region = "..(Region or "nil"))
+	LOG_INFO("Map = "..(Map or "nil"))
+	LOG_INFO("Filename = "..(FileName or "nil"))
+
+	local nb = 0
+	-- get map
+		
+	local MapName2 = MapSaveMgr.Regions[Region]["Map"..tostring(Map)][1] or "&NilReturned"
+	local MapDesc = MapSaveMgr.Regions[Region]["Map"..tostring(Map)][3] or "&NilReturned"
+	
+	LOG_INFO("MapName2 = "..(MapName2 or "nil"))
+	LOG_INFO("MapDesc = "..(MapDesc or "nil"))
+
+	
+
+	local Name = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][1]
+	local LevelName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][1]
+	local Desc = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][3]
+	local Diff = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][7]
+	
+	local X = 0 --MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][4]
+	local Y = 0 --MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][5]
+	local rot = 0-- MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][6]
+
+	local MapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][2]
+	
+	local Pop = 0
+	local CashFlow = 0 
+	local Tourists = 0
+	local PopSat = 0
+	local Jobless = 0
+
+	local Image = "Data/Interface/DDSTexture/Maps/"..MapName..".dds"
+	--else
+	--Image = "Data/Interface/DDSTexture/Maps/"..MapMgr.g_FullMapList[MapName]["Image"]
+	--end
+		
+	local Playable = 0
+--	MapSaveMgr.CurrentMapPlayable = false
+	
+	if MapMgr.g_FullMapList[MapName] ~= nil and MapMgr.g_FullMapList[MapName].Playable ~= nil and MapMgr.g_FullMapList[MapName].Playable == true then 
+		Playable = 1	
+	end	
+	
+	--local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, index)
+	
+	local SaveFile = InterfaceFileMgr:GetFullFileName(FileName..".sol", "solo")
+	
+	local SaveFileExists = InterfaceFileMgr:FileExist(FileName..".sol", "solo")
+	
+	if (SaveFileExists) then 
+		
+		Playable = 1
+	else	
+		
+	end
+
+	--if (RightsMgr:IsMapAllowed(MapName) == false) then 
+	--	Playable = 0
+	--end
+
+	local ScreenName = MapSaveMgr:getScreenFileName(RegionNb, Map)
+	local SmallScreenSaveFile = InterfaceFileMgr:GetFullFileName(ScreenName..".dds", "solo") 
+	
+	if (SaveFileExists) then
+		
+		LOG_INFO("Filename = "..FileName)
+	
+		FileName = FileName..".sol"
+		if (MapSaveMgr.SaveNameTable[FileName] == nil) then
+			InterfaceUtilities:LOG_ERROR ("table not initialized for "..FileName)
+			MapSaveMgr.SaveNameTable[FileName] = {}
+		end
+		CityName = 			MapSaveMgr.SaveNameTable[FileName].CityName or "Name Not Found"
+		Pop = 			MapSaveMgr.SaveNameTable[FileName].Population or "0"
+		CashFlow = 		MapSaveMgr.SaveNameTable[FileName].CashFlow or "0"
+		Tourists = 		MapSaveMgr.SaveNameTable[FileName].Tourists or 	"0"
+		PopSat = 		math.floor(MapSaveMgr.SaveNameTable[FileName].PopSat or 	0)
+		Jobless = 		math.floor(MapSaveMgr.SaveNameTable[FileName].Jobless or 0)
+			
+		if InterfaceFileMgr:FileExist(ScreenName..".dds", "solo")  then 
+			Image = SmallScreenSaveFile
+			LOG_ERROR("Image = "..Image)
+		end
+		
+		
+		local STR = tostring(Map).."|"..CityName.."|"..Desc.."|"..tostring(SaveFileExists).."|"..Pop.."|"..CashFlow.."|"..X.."|"..Y.."|"..Image.."|"..rot.."|"..PopSat.."|"..Jobless.."|"..Tourists.."|"..LevelName.."|"..Playable	
+		LOG_INFO("doing tooltip with "..STR)
+
+		SCALEFORMMGR:DoActionScriptWithArg("REGIONSELECT","setCityToolTip", STR);
+
+	else
+		
+		LOG_INFO("Filename "..SaveFile.." does not exist")
+		
+		local STR = tostring(Map).."|"..Name.."|"..Desc.."|"..tostring(SaveFileExists).."|"..Pop.."|"..CashFlow.."|"..X.."|"..Y.."|"..Image.."|"..rot.."|"..PopSat.."|"..Jobless.."|"..Tourists.."|"..LevelName.."|"..Playable
+		LOG_INFO("doing tooltip with "..STR)
+		SCALEFORMMGR:DoActionScriptWithArg("REGIONSELECT","setMapToolTip",STR);
+		
+	end]]
+
+	PLANET_OnIconRollOver()
+	
+end
+	
+
+	
+function MapSaveMgr_OnIconRollOut(_IconId)
+	Sound2D:StopAll()
+	
+	
+	if (InterfaceMgr.CurrentScreen ~= "REGIONSELECT") then
+		return
+	end
+	
+	--SCALEFORMMGR:DoActionScript( "REGIONSELECT", "hideOverlayToolTips")
+	SCALEFORMMGR:DoActionScript("REGIONSELECT", "_level0.removeToolTip")
+end
+
+
+function  MapSaveMgr_OnIconPress(_IconId)
+
+	local Region = MapSaveMgr.IconIds [_IconId].Region
+	local RegionNb = MapSaveMgr.IconIds [_IconId].RegionNb
+	
+	if (MapSaveMgr:IsLERA(RegionNb) == false) then 
+		return 
+	end
+	
+	
+	local Map = MapSaveMgr.IconIds [_IconId].Map
+	local Name = MapSaveMgr.IconIds [_IconId].Name
+	
+	MapSaveMgr:SetCurrentRegion(RegionNb)
+	MapSaveMgr:SetCurrentMap(Map)
+	
+	local FileName = MapSaveMgr:getFileName(MapSaveMgr.CurrentRegion, MapSaveMgr.CurrentMap)
+	local SaveFile = InterfaceFileMgr:GetFullFileName(FileName, "solo") 
+	--local NewFile = "Data\\Level\\"..NewMapName..".lvl"
+	
+	--LOG_INFO("FileName " .. tostring(FileName))
+	--LOG_INFO("SaveFile " .. tostring(SaveFile))
+	
+	--local SaveFileExists = FileSystem:FileExist(SaveFile)
+	local SaveFileExists = InterfaceFileMgr:FileExist(FileName, "solo")
+	
+	--LOG_INFO("SaveFileExists " .. tostring(SaveFileExists))
+	
+	local strCityId = MapSaveMgr:getCurrentCityId()
+	local aSourceCityInfos = MapSaveMgr.SaveNameTable[strCityId]
+	
+	if (SaveFileExists and aSourceCityInfos) then 
+
+		--[[LocVarMgr:SetValue("CityName", MapSaveMgr:getCurrentCityName())
+			
+		INGAME.VisitMode = false
+		if (g_CityIsBeingPlayed) and (g_CityIsBeingPlayedIsSolo) and (g_CityIsBeingPlayedID == MapSaveMgr:getCurrentCityId()) then
+			InterfaceMgr:GotoScreen("INGAME")
+		else
+			g_CityIsBeingPlayed = true
+			g_CityIsBeingPlayedIsSolo = true
+			g_CityIsBeingPlayedID = MapSaveMgr:getCurrentCityId()
+			
+			Command:Post("SCENE", "LOAD:GAME:E_LOCAL_APPDATA", SaveFile)
+			
+			InterfaceMgr:GotoScreen("INGAME")
+		end]]
+		
+		local aCityInfos = {}
+		aCityInfos["PlayerName"] = g_strNickName
+		
+		
+		
+		aCityInfos["MyCity"] = 1
+		
+		aCityInfos["Id"] = Map
+		
+		
+		
+		aCityInfos["TotalPop"] = aSourceCityInfos["Population"]
+		
+		
+		
+		aCityInfos["Unemployment"] = math.floor(tonumber(aSourceCityInfos["Jobless"]))
+		aCityInfos["CashFlow"] = math.floor(tonumber(aSourceCityInfos["CashFlow"]))
+		aCityInfos["Cash"] = math.floor(tonumber(aSourceCityInfos["Cash"]))
+		
+		
+		
+		local NewMapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][1] or "&NilReturned"
+		
+		aCityInfos["MapName"] = NewMapName 
+		
+		local WithoutLocKey = string.sub(NewMapName,2)
+		
+		
+		
+		aCityInfos["CityName"] = aSourceCityInfos["CityName"]
+		
+		LocVarMgr:SetValue("CITYNAME", aSourceCityInfos["CityName"])
+		LocVarMgr:SetValue("CITYMAP", Localization:GetText(WithoutLocKey))
+		LocVarMgr:SetValue("CITYCASH", math.floor(aSourceCityInfos["Cash"]))
+		LocVarMgr:SetValue("CITYPOP", aSourceCityInfos["Population"])
+		LocVarMgr:SetValue("MAYORNAME", g_strNickName)
+		
+		local strCityInfos = InterfaceUtilities:ListTable_withText(aCityInfos)
+		
+		--LOG_INFO("strCityInfos " .. strCityInfos)
+		
+		Interface:DoActionScript("REGIONSELECT","_level0.CityInformation.SetSolo");
+		Interface:DoActionScriptWithArg("REGIONSELECT","_level0.CityInformation.CitySelected", strCityInfos);
+		
+		local strTokenStatus = ""
+		
+		aSourceCityInfos.Tokens = aSourceCityInfos.Tokens or {}
+		
+		for k,v in pairs (aSourceCityInfos.Tokens) do 
+		
+			if (strTokenStatus~= "") then 
+				strTokenStatus = strTokenStatus .."||"
+			end
+			
+			strTokenStatus = strTokenStatus ..k.."|"..v.available
+		
+		end
+		
+		Interface:DoActionScriptWithArg("REGIONSELECT","_level0.CityInformation.TokenStatus", strTokenStatus)
+		
+		local ContractNb = 0
+		
+		MapSaveMgr.ContractList = MapSaveMgr.ContractList or {}
+		
+		for k,v in pairs (MapSaveMgr.ContractList[strCityId] or {}) do 
+			ContractNb = ContractNb + 1 
+		end
+		
+		Interface:DoActionScriptWithArg("REGIONSELECT","_level0.CityInformation.TradeStatus", tostring(ContractNb or 0))
+		
+		
+		
+		
+	else
+		--LOG_INFO("MapSaveMgr:StartGame 2: LOAD=(" .. SaveFile .."))")
+		--Interface:DoActionScript("REGIONSELECT", "DoCreateCity")
+		
+		local strMapName = MapSaveMgr.Regions["Region"..tostring(RegionNb)]["Map"..tostring(Map)][2]
+
+		local strMapInfo
+		
+		if (MapMgr.g_FullMapList[strMapName].Name == nil) then
+				strMapInfo = "&" .. strMapName;
+			else
+				strMapInfo = MapMgr.g_FullMapList[strMapName].Name;
+			end
+		
+		strMapInfo = strMapInfo ..";"..strMapName
+		
+		
+		LocVarMgr:SetValue("CITYMAP", Localization:GetText(strMapName))
+		LocVarMgr:SetValue("CITYCASH", 0)
+		LocVarMgr:SetValue("CITYPOP", 0)
+		LocVarMgr:SetValue("MAYORNAME", g_strNickName)
+		
+		
+		if (MapMgr.g_FullMapList[strMapName].Desc == nil) then
+			strMapInfo = strMapInfo .. ";" .. "&" .. strMapName .. "_DESC";
+		else
+			strMapInfo = strMapInfo .. ";" .. MapMgr.g_FullMapList[strMapName].Desc;
+		end
+
+		strMapInfo = strMapInfo .. ";" .. strMapName .. ".dds;&" .. strMapName .. "_DIFFICULTY";
+		
+		--LOG_INFO("strMapInfo " .. strMapInfo)
+
+		local aMapDesc = MapMgr:UpdateNewCreateCityPane(strMapName)
+		local strDescString = InterfaceUtilities:ListTable_withText(aMapDesc)
+
+		Interface:DoActionScript("REGIONSELECT","_level0.FullPanelCreateCity.Show");
+
+		Interface:DoActionScript("REGIONSELECT","_level0.FullPanelCreateCity.ClearMaps");
+		Interface:DoActionScriptWithArg("REGIONSELECT","_level0.FullPanelCreateCity.AddMap", strMapInfo);
+
+		Interface:DoActionScriptWithArg("REGIONSELECT", "_level0.FullPanelCreateCity.UpdateMapDescription", strDescString)
+		
+		Interface:DoActionScript("REGIONSELECT","FullPanelCreateCity.RefreshMapDisplay");
+
+	end
+	
+	--LOG_ERROR("Map = "..Map.." region = "..Region)
+
+end
+
+function  MapSaveMgr_OnIconRelease()
+end
+	
